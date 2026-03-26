@@ -443,7 +443,7 @@ function renderOrgList() {
   }).join('');
   if (orgs.length > 200) container.innerHTML += `<div style="padding:8px 10px;font-size:11px;color:var(--text-dim);text-align:center">+${orgs.length-200} more</div>`;
   document.getElementById('org-list-count').textContent = selectedFips ? `${orgs.length} in selected county` : `${orgs.length} organizations`;
-  document.getElementById('clear-selection-btn').style.display = selectedFips ? 'block' : 'none';
+  document.getElementById('clear-selection-btn').style.display = (selectedFips || highlightedFips.length > 0) ? 'block' : 'none';
   container.querySelectorAll('.org-item').forEach(el => {
     el.addEventListener('click', () => {
       const org = allOrgs.find(o => o.id === parseInt(el.dataset.id));
@@ -465,6 +465,7 @@ function showOrgDetail(org) {
   const fips = getOrgFips(org);
   if (!fips.length) return;
   setHighlight(fips);
+  document.getElementById("clear-selection-btn").style.display = "block";
   const prefixes = [...new Set(fips.map(f => Math.floor(f/1000)))];
   let mn=180,ms=90,mx=-180,my=-90;
   prefixes.forEach(p => { const b=STATE_BBOX[p]; if(b){mn=Math.min(mn,b[0]);ms=Math.min(ms,b[1]);mx=Math.max(mx,b[2]);my=Math.max(my,b[3]);} });
@@ -474,6 +475,7 @@ function showOrgDetail(org) {
 function clearOrgDetail() {
   document.getElementById('org-detail').classList.remove('visible');
   clearHighlight();
+  document.getElementById("clear-selection-btn").style.display = selectedFips ? "block" : "none";
 }
 
 function renderNationalList() {
