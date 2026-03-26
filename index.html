@@ -1005,6 +1005,18 @@ function showOrgDetail(org) {
 
   // Convert fips to strings to match tileset format
   const fipsStrings = fips.map(f => String(f));
+  console.log('Org:', org.name);
+  console.log('FIPS integers:', fips);
+  console.log('FIPS strings:', fipsStrings);
+  
+  // Test what the tileset actually has loaded at this point
+  const loaded = map.querySourceFeatures('counties', { sourceLayer: 'original' });
+  console.log('Total loaded county features:', loaded.length);
+  if (loaded.length > 0) {
+    console.log('Sample FIPS values from tileset:', loaded.slice(0,5).map(f => f.properties.FIPS), 
+      'types:', loaded.slice(0,5).map(f => typeof f.properties.FIPS));
+  }
+  
   map.setFilter('county-fills-highlight', [
     'in', ['to-string', ['get', 'FIPS']], ['literal', fipsStrings]
   ]);
