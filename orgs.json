@@ -1,0 +1,2065 @@
+[
+  {
+    "id": 3,
+    "name": "Bridging America",
+    "website": "https://www.bridgingamerica.org",
+    "scope": "national",
+    "city": "Anchorage",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 4,
+    "name": "Democracy Works Institute",
+    "website": "https://www.democracyworks.org",
+    "scope": "national",
+    "city": "Wilmington",
+    "hqState": "",
+    "mission": "Running civic education programs in K-12 schools",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 5,
+    "name": "Civic Health Alliance",
+    "website": "https://www.civichealthalliance.org",
+    "scope": "national",
+    "city": "Anchorage",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 6,
+    "name": "Common Ground USA",
+    "website": "https://www.commongroundusa.org",
+    "scope": "national",
+    "city": "Anchorage",
+    "hqState": "",
+    "mission": "Advocating for ranked-choice voting at the state level",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 7,
+    "name": "National Voter Empowerment Project",
+    "website": "https://www.voterempowerment.org",
+    "scope": "national",
+    "city": "Oklahoma City",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 8,
+    "name": "Press Forward Foundation",
+    "website": "https://www.pressforward.org",
+    "scope": "national",
+    "city": "Birmingham",
+    "hqState": "",
+    "mission": "Facilitating cross-partisan conversations",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 9,
+    "name": "Open Government Initiative",
+    "website": "https://www.opengovinit.org",
+    "scope": "national",
+    "city": "Honolulu",
+    "hqState": "",
+    "mission": "Offering research and data to support local organizers",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 10,
+    "name": "Thriving Together Network",
+    "website": "https://www.thrivingtogether.org",
+    "scope": "national",
+    "city": "Billings",
+    "hqState": "",
+    "mission": "Building technology tools for civic participation",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 11,
+    "name": "National Center for Civic Innovation",
+    "website": "https://www.civicinnov.org",
+    "scope": "national",
+    "city": "New Orleans",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 12,
+    "name": "Renew Democracy Fund",
+    "website": "https://www.renewdemocracy.org",
+    "scope": "national",
+    "city": "Billings",
+    "hqState": "",
+    "mission": "Conducting nonpartisan voter registration drives",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 13,
+    "name": "Citizen Voice Project",
+    "website": "https://www.citizenvoiceproject.org",
+    "scope": "national",
+    "city": "Kansas City",
+    "hqState": "",
+    "mission": "Advocating for ranked-choice voting at the state level",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 14,
+    "name": "The Accountability Institute",
+    "website": "https://www.accountabilityinstitute.org",
+    "scope": "national",
+    "city": "Salt Lake City",
+    "hqState": "",
+    "mission": "Conducting nonpartisan voter registration drives",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 15,
+    "name": "Election Integrity Alliance",
+    "website": "https://www.electionintegrity.org",
+    "scope": "national",
+    "city": "Wilmington",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 16,
+    "name": "Rural Civic Network",
+    "website": "https://www.ruralcivic.org",
+    "scope": "national",
+    "city": "Boise",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 17,
+    "name": "Public Trust Initiative",
+    "website": "https://www.publictrust.org",
+    "scope": "national",
+    "city": "Richmond",
+    "hqState": "",
+    "mission": "Supporting rural leaders through peer networks",
+    "fips": [],
+    "states": []
+  },
+  {
+    "id": 18,
+    "name": "Great Lakes Civic Hub",
+    "website": "https://www.greatlakescivic.org",
+    "scope": "statewide",
+    "city": "Detroit",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [],
+    "states": [
+      "MI",
+      "WI",
+      "OH",
+      "IN"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Southwest Democracy Project",
+    "website": "https://www.swdemocracy.org",
+    "scope": "statewide",
+    "city": "Phoenix",
+    "hqState": "",
+    "mission": "Supporting rural leaders through peer networks",
+    "fips": [],
+    "states": [
+      "AZ",
+      "NM",
+      "NV"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "New England Voter Alliance",
+    "website": "https://www.newenglandvoter.org",
+    "scope": "statewide",
+    "city": "Boston",
+    "hqState": "",
+    "mission": "Building technology tools for civic participation",
+    "fips": [],
+    "states": [
+      "MA",
+      "CT",
+      "RI",
+      "VT"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Southeast Civic Coalition",
+    "website": "https://www.seciviccollition.org",
+    "scope": "statewide",
+    "city": "Atlanta",
+    "hqState": "",
+    "mission": "Hosting community dialogue events",
+    "fips": [],
+    "states": [
+      "GA",
+      "TN",
+      "SC"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Mountain West Organizing",
+    "website": "https://www.mountainwestorg.org",
+    "scope": "statewide",
+    "city": "Denver",
+    "hqState": "",
+    "mission": "Supporting rural leaders through peer networks",
+    "fips": [],
+    "states": [
+      "CO",
+      "UT",
+      "WY",
+      "MT"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Pacific Northwest Democracy",
+    "website": "https://www.pnwdemocracy.org",
+    "scope": "statewide",
+    "city": "Seattle",
+    "hqState": "",
+    "mission": "Conducting nonpartisan voter registration drives",
+    "fips": [],
+    "states": [
+      "WA",
+      "OR"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Gulf Coast Community Voices",
+    "website": "https://www.gulfcoastvoices.org",
+    "scope": "statewide",
+    "city": "New Orleans",
+    "hqState": "",
+    "mission": "Conducting nonpartisan voter registration drives",
+    "fips": [],
+    "states": [
+      "LA",
+      "MS"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Heartland Civic Initiative",
+    "website": "https://www.heartlandcivic.org",
+    "scope": "statewide",
+    "city": "Des Moines",
+    "hqState": "",
+    "mission": "Facilitating cross-partisan conversations",
+    "fips": [],
+    "states": [
+      "IA",
+      "KS",
+      "NE"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Mid-Atlantic Voter Rights",
+    "website": "https://www.midatlanticvoting.org",
+    "scope": "statewide",
+    "city": "Baltimore",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [],
+    "states": [
+      "MD",
+      "VA",
+      "DE"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Texas Civic Alliance",
+    "website": "https://www.texascivic.org",
+    "scope": "statewide",
+    "city": "Houston",
+    "hqState": "",
+    "mission": "Hosting community dialogue events",
+    "fips": [],
+    "states": [
+      "TX"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "California Democracy Center",
+    "website": "https://www.calidemo.org",
+    "scope": "statewide",
+    "city": "Los Angeles",
+    "hqState": "",
+    "mission": "Supporting rural leaders through peer networks",
+    "fips": [],
+    "states": [
+      "CA"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Florida Civic Network",
+    "website": "https://www.floridacivic.org",
+    "scope": "statewide",
+    "city": "Tampa",
+    "hqState": "",
+    "mission": "Facilitating cross-partisan conversations",
+    "fips": [],
+    "states": [
+      "FL"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "New York Public Interest Hub",
+    "website": "https://www.nypublichub.org",
+    "scope": "statewide",
+    "city": "New York",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [],
+    "states": [
+      "NY"
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Illinois Civic Lab",
+    "website": "https://www.illinoisciviclab.org",
+    "scope": "statewide",
+    "city": "Chicago",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [],
+    "states": [
+      "IL"
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Pennsylvania Democracy Fund",
+    "website": "https://www.pademo.org",
+    "scope": "statewide",
+    "city": "Philadelphia",
+    "hqState": "",
+    "mission": "Supporting rural leaders through peer networks",
+    "fips": [],
+    "states": [
+      "PA"
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Ohio Civic Trust",
+    "website": "https://www.ohiocivictrust.org",
+    "scope": "statewide",
+    "city": "Columbus",
+    "hqState": "",
+    "mission": "Providing training and capacity building for grassroots groups",
+    "fips": [],
+    "states": [
+      "OH"
+    ]
+  },
+  {
+    "id": 34,
+    "name": "North Carolina Community Voice",
+    "website": "https://www.nccomvoice.org",
+    "scope": "statewide",
+    "city": "Charlotte",
+    "hqState": "",
+    "mission": "Providing legal support for voting rights cases",
+    "fips": [],
+    "states": [
+      "NC"
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Minnesota Common Ground",
+    "website": "https://www.mncommonground.org",
+    "scope": "statewide",
+    "city": "Minneapolis",
+    "hqState": "",
+    "mission": "Supporting rural leaders through peer networks",
+    "fips": [],
+    "states": [
+      "MN"
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Wisconsin Voter Empowerment",
+    "website": "https://www.wivoter.org",
+    "scope": "statewide",
+    "city": "Milwaukee",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [],
+    "states": [
+      "WI"
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Arizona Civic Innovation",
+    "website": "https://www.azcivic.org",
+    "scope": "statewide",
+    "city": "Phoenix",
+    "hqState": "",
+    "mission": "Providing legal support for voting rights cases",
+    "fips": [],
+    "states": [
+      "AZ"
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Nevada Democracy Watch",
+    "website": "https://www.nvdemowatch.org",
+    "scope": "statewide",
+    "city": "Las Vegas",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [],
+    "states": [
+      "NV"
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Georgia Action Network",
+    "website": "https://www.gaaction.org",
+    "scope": "statewide",
+    "city": "Atlanta",
+    "hqState": "",
+    "mission": "Providing legal support for voting rights cases",
+    "fips": [],
+    "states": [
+      "GA"
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Michigan Civic Alliance",
+    "website": "https://www.micivicalliance.org",
+    "scope": "statewide",
+    "city": "Detroit",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [],
+    "states": [
+      "MI"
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Virginia Common Ground",
+    "website": "https://www.vacomground.org",
+    "scope": "statewide",
+    "city": "Richmond",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [],
+    "states": [
+      "VA"
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Colorado Civic Lab",
+    "website": "https://www.cociviclab.org",
+    "scope": "statewide",
+    "city": "Denver",
+    "hqState": "",
+    "mission": "Providing training and capacity building for grassroots groups",
+    "fips": [],
+    "states": [
+      "CO"
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Washington Civic Forum",
+    "website": "https://www.wacivicforum.org",
+    "scope": "statewide",
+    "city": "Seattle",
+    "hqState": "",
+    "mission": "Providing training and capacity building for grassroots groups",
+    "fips": [],
+    "states": [
+      "WA"
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Tennessee Civic Trust",
+    "website": "https://www.tncivictrust.org",
+    "scope": "statewide",
+    "city": "Nashville",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [],
+    "states": [
+      "TN"
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Iowa-Nebraska Democracy Hub",
+    "website": "https://www.ianedemo.org",
+    "scope": "statewide",
+    "city": "Des Moines",
+    "hqState": "",
+    "mission": "Conducting nonpartisan voter registration drives",
+    "fips": [],
+    "states": [
+      "IA",
+      "NE"
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Northern Plains Civic Network",
+    "website": "https://www.northernplainscivic.org",
+    "scope": "statewide",
+    "city": "Fargo",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [],
+    "states": [
+      "ND",
+      "SD",
+      "MT"
+    ]
+  },
+  {
+    "id": 47,
+    "name": "Appalachian Democracy Project",
+    "website": "https://www.appalachiademo.org",
+    "scope": "statewide",
+    "city": "Charleston",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [],
+    "states": [
+      "WV",
+      "KY",
+      "TN"
+    ]
+  },
+  {
+    "id": 48,
+    "name": "Mississippi-Alabama Civic Alliance",
+    "website": "https://www.msalcivic.org",
+    "scope": "statewide",
+    "city": "Jackson",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [],
+    "states": [
+      "MS",
+      "AL"
+    ]
+  },
+  {
+    "id": 49,
+    "name": "Idaho-Wyoming Civic Coalition",
+    "website": "https://www.idwycivic.org",
+    "scope": "statewide",
+    "city": "Boise",
+    "hqState": "",
+    "mission": "Hosting community dialogue events",
+    "fips": [],
+    "states": [
+      "ID",
+      "WY"
+    ]
+  },
+  {
+    "id": 50,
+    "name": "Rust Belt Civic Initiative",
+    "website": "https://www.rustbeltcivic.org",
+    "scope": "statewide",
+    "city": "Columbus",
+    "hqState": "",
+    "mission": "Hosting community dialogue events",
+    "fips": [],
+    "states": [
+      "OH",
+      "PA",
+      "MI"
+    ]
+  },
+  {
+    "id": 51,
+    "name": "Delta Democracy Project",
+    "website": "https://www.deltademo.org",
+    "scope": "statewide",
+    "city": "Jackson",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [],
+    "states": [
+      "MS",
+      "LA",
+      "AR"
+    ]
+  },
+  {
+    "id": 52,
+    "name": "Border Communities Alliance",
+    "website": "https://www.bordercommunities.org",
+    "scope": "statewide",
+    "city": "Houston",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [],
+    "states": [
+      "TX",
+      "NM",
+      "AZ"
+    ]
+  },
+  {
+    "id": 53,
+    "name": "New England Democracy Lab",
+    "website": "https://www.nedemolab.org",
+    "scope": "statewide",
+    "city": "Portland",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [],
+    "states": [
+      "ME",
+      "NH",
+      "VT"
+    ]
+  },
+  {
+    "id": 54,
+    "name": "Chesapeake Civic Hub",
+    "website": "https://www.chesapeakecivic.org",
+    "scope": "statewide",
+    "city": "Baltimore",
+    "hqState": "",
+    "mission": "Hosting community dialogue events",
+    "fips": [],
+    "states": [
+      "MD",
+      "VA"
+    ]
+  },
+  {
+    "id": 55,
+    "name": "Four Corners Civic Project",
+    "website": "https://www.fourcornerscivic.org",
+    "scope": "statewide",
+    "city": "Denver",
+    "hqState": "",
+    "mission": "Facilitating cross-partisan conversations",
+    "fips": [],
+    "states": [
+      "CO",
+      "UT",
+      "NM",
+      "AZ"
+    ]
+  },
+  {
+    "id": 56,
+    "name": "Midwest Voter Rights Network",
+    "website": "https://www.midwestvoter.org",
+    "scope": "statewide",
+    "city": "Minneapolis",
+    "hqState": "",
+    "mission": "Supporting rural leaders through peer networks",
+    "fips": [],
+    "states": [
+      "MN",
+      "WI",
+      "IA",
+      "MI"
+    ]
+  },
+  {
+    "id": 57,
+    "name": "Southern Appalachia Democracy",
+    "website": "https://www.southappldemo.org",
+    "scope": "statewide",
+    "city": "Charlotte",
+    "hqState": "",
+    "mission": "Advocating for ranked-choice voting at the state level",
+    "fips": [],
+    "states": [
+      "NC",
+      "TN",
+      "GA"
+    ]
+  },
+  {
+    "id": 58,
+    "name": "Jefferson Civic League",
+    "website": "https://www.jeffersoncivic.org",
+    "scope": "local",
+    "city": "Birmingham",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [
+      1073,
+      1117
+    ],
+    "states": []
+  },
+  {
+    "id": 59,
+    "name": "Mobile Bay Democracy Project",
+    "website": "https://www.mobiledemo.org",
+    "scope": "local",
+    "city": "Birmingham",
+    "hqState": "",
+    "mission": "Providing training and capacity building for grassroots groups",
+    "fips": [
+      1097
+    ],
+    "states": []
+  },
+  {
+    "id": 60,
+    "name": "Anchorage Civic Initiative",
+    "website": "https://www.anccivic.org",
+    "scope": "local",
+    "city": "Anchorage",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [
+      2020,
+      2170
+    ],
+    "states": []
+  },
+  {
+    "id": 61,
+    "name": "Maricopa Voter Alliance",
+    "website": "https://www.maricopa voter.org",
+    "scope": "local",
+    "city": "Phoenix",
+    "hqState": "",
+    "mission": "Connecting local leaders across our network",
+    "fips": [
+      4013
+    ],
+    "states": []
+  },
+  {
+    "id": 62,
+    "name": "Pima County Civic Hub",
+    "website": "https://www.pimacivic.org",
+    "scope": "local",
+    "city": "Phoenix",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [
+      4019,
+      4021
+    ],
+    "states": []
+  },
+  {
+    "id": 63,
+    "name": "Navajo Nation Civic Network",
+    "website": "https://www.navajonation civic.org",
+    "scope": "local",
+    "city": "Phoenix",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [
+      4017,
+      4001
+    ],
+    "states": []
+  },
+  {
+    "id": 64,
+    "name": "LA Civic Action",
+    "website": "https://www.lacivicaction.org",
+    "scope": "local",
+    "city": "Los Angeles",
+    "hqState": "",
+    "mission": "Providing training and capacity building for grassroots groups",
+    "fips": [
+      6037,
+      6059
+    ],
+    "states": []
+  },
+  {
+    "id": 65,
+    "name": "Bay Area Democracy Lab",
+    "website": "https://www.baydemolab.org",
+    "scope": "local",
+    "city": "Los Angeles",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [
+      6075,
+      6001,
+      6013
+    ],
+    "states": []
+  },
+  {
+    "id": 66,
+    "name": "Central Valley Civic Hub",
+    "website": "https://www.cvhub.org",
+    "scope": "local",
+    "city": "Los Angeles",
+    "hqState": "",
+    "mission": "Advocating for ranked-choice voting at the state level",
+    "fips": [
+      6019,
+      6029,
+      6107
+    ],
+    "states": []
+  },
+  {
+    "id": 67,
+    "name": "San Diego Civic Forum",
+    "website": "https://www.sdcivicforum.org",
+    "scope": "local",
+    "city": "Los Angeles",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [
+      6073
+    ],
+    "states": []
+  },
+  {
+    "id": 68,
+    "name": "Sacramento Civic Alliance",
+    "website": "https://www.saccivic.org",
+    "scope": "local",
+    "city": "Los Angeles",
+    "hqState": "",
+    "mission": "Advocating for ranked-choice voting at the state level",
+    "fips": [
+      6067,
+      6113
+    ],
+    "states": []
+  },
+  {
+    "id": 69,
+    "name": "Denver Metro Civic Lab",
+    "website": "https://www.denverciviclab.org",
+    "scope": "local",
+    "city": "Denver",
+    "hqState": "",
+    "mission": "Connecting local leaders across our network",
+    "fips": [
+      8031,
+      8059,
+      8005
+    ],
+    "states": []
+  },
+  {
+    "id": 70,
+    "name": "Front Range Democracy",
+    "website": "https://www.frontrangedemo.org",
+    "scope": "local",
+    "city": "Denver",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [
+      8013,
+      8069,
+      8123
+    ],
+    "states": []
+  },
+  {
+    "id": 71,
+    "name": "Hartford Civic Alliance",
+    "website": "https://www.hartfordcivic.org",
+    "scope": "local",
+    "city": "Hartford",
+    "hqState": "",
+    "mission": "Building technology tools for civic participation",
+    "fips": [
+      9003,
+      9013
+    ],
+    "states": []
+  },
+  {
+    "id": 72,
+    "name": "Fairfield Democracy Project",
+    "website": "https://www.fairfielddemo.org",
+    "scope": "local",
+    "city": "Hartford",
+    "hqState": "",
+    "mission": "Supporting rural leaders through peer networks",
+    "fips": [
+      9001
+    ],
+    "states": []
+  },
+  {
+    "id": 73,
+    "name": "Miami Civic Coalition",
+    "website": "https://www.miamicivic.org",
+    "scope": "local",
+    "city": "Tampa",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [
+      12086,
+      12011
+    ],
+    "states": []
+  },
+  {
+    "id": 74,
+    "name": "Tampa Bay Democracy Hub",
+    "website": "https://www.tampabaydemocracy.org",
+    "scope": "local",
+    "city": "Tampa",
+    "hqState": "",
+    "mission": "Hosting community dialogue events",
+    "fips": [
+      12057,
+      12103,
+      12101
+    ],
+    "states": []
+  },
+  {
+    "id": 75,
+    "name": "Orlando Area Civic Forum",
+    "website": "https://www.orlandocivic.org",
+    "scope": "local",
+    "city": "Tampa",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [
+      12095,
+      12117,
+      12097
+    ],
+    "states": []
+  },
+  {
+    "id": 76,
+    "name": "North Florida Civic Alliance",
+    "website": "https://www.northfloridacivic.org",
+    "scope": "local",
+    "city": "Tampa",
+    "hqState": "",
+    "mission": "Advocating for ranked-choice voting at the state level",
+    "fips": [
+      12031,
+      12019,
+      12089
+    ],
+    "states": []
+  },
+  {
+    "id": 77,
+    "name": "Atlanta Metro Civic Hub",
+    "website": "https://www.atlantacivic.org",
+    "scope": "local",
+    "city": "Atlanta",
+    "hqState": "",
+    "mission": "Providing training and capacity building for grassroots groups",
+    "fips": [
+      13121,
+      13135,
+      13089,
+      13067
+    ],
+    "states": []
+  },
+  {
+    "id": 78,
+    "name": "Savannah Civic Forum",
+    "website": "https://www.savannacivic.org",
+    "scope": "local",
+    "city": "Atlanta",
+    "hqState": "",
+    "mission": "Offering research and data to support local organizers",
+    "fips": [
+      13051
+    ],
+    "states": []
+  },
+  {
+    "id": 79,
+    "name": "Columbus Civic Alliance",
+    "website": "https://www.columbuscivicga.org",
+    "scope": "local",
+    "city": "Atlanta",
+    "hqState": "",
+    "mission": "Running civic education programs in K-12 schools",
+    "fips": [
+      13215,
+      13145
+    ],
+    "states": []
+  },
+  {
+    "id": 80,
+    "name": "Treasure Valley Civic Project",
+    "website": "https://www.treasurevalleycivic.org",
+    "scope": "local",
+    "city": "Boise",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [
+      16001,
+      16027
+    ],
+    "states": []
+  },
+  {
+    "id": 81,
+    "name": "Chicago Civic Alliance",
+    "website": "https://www.chicagocivic.org",
+    "scope": "local",
+    "city": "Chicago",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [
+      17031,
+      17097,
+      17043
+    ],
+    "states": []
+  },
+  {
+    "id": 82,
+    "name": "Downstate Illinois Civic Hub",
+    "website": "https://www.downstatecivic.org",
+    "scope": "local",
+    "city": "Chicago",
+    "hqState": "",
+    "mission": "Providing training and capacity building for grassroots groups",
+    "fips": [
+      17019,
+      17167,
+      17143
+    ],
+    "states": []
+  },
+  {
+    "id": 83,
+    "name": "Indianapolis Civic Lab",
+    "website": "https://www.indyciviclab.org",
+    "scope": "local",
+    "city": "Indianapolis",
+    "hqState": "",
+    "mission": "Providing legal support for voting rights cases",
+    "fips": [
+      18097,
+      18057,
+      18063
+    ],
+    "states": []
+  },
+  {
+    "id": 84,
+    "name": "Fort Wayne Civic Forum",
+    "website": "https://www.ftwcivic.org",
+    "scope": "local",
+    "city": "Indianapolis",
+    "hqState": "",
+    "mission": "Building technology tools for civic participation",
+    "fips": [
+      18003,
+      18183
+    ],
+    "states": []
+  },
+  {
+    "id": 85,
+    "name": "Des Moines Civic Alliance",
+    "website": "https://www.desmoines civic.org",
+    "scope": "local",
+    "city": "Des Moines",
+    "hqState": "",
+    "mission": "Conducting nonpartisan voter registration drives",
+    "fips": [
+      19153,
+      19049,
+      19181
+    ],
+    "states": []
+  },
+  {
+    "id": 86,
+    "name": "Quad Cities Civic Hub",
+    "website": "https://www.quadcitiescivic.org",
+    "scope": "local",
+    "city": "Des Moines",
+    "hqState": "",
+    "mission": "Conducting nonpartisan voter registration drives",
+    "fips": [
+      19163,
+      19045
+    ],
+    "states": []
+  },
+  {
+    "id": 87,
+    "name": "Wichita Civic Coalition",
+    "website": "https://www.wichitacivic.org",
+    "scope": "local",
+    "city": "Wichita",
+    "hqState": "",
+    "mission": "Offering research and data to support local organizers",
+    "fips": [
+      20173,
+      20015
+    ],
+    "states": []
+  },
+  {
+    "id": 88,
+    "name": "Johnson County Democracy Hub",
+    "website": "https://www.jcoksdemo.org",
+    "scope": "local",
+    "city": "Wichita",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [
+      20091,
+      20103
+    ],
+    "states": []
+  },
+  {
+    "id": 89,
+    "name": "Louisville Metro Civic Forum",
+    "website": "https://www.louisvillecivic.org",
+    "scope": "local",
+    "city": "Louisville",
+    "hqState": "",
+    "mission": "Facilitating cross-partisan conversations",
+    "fips": [
+      21111,
+      21185,
+      21029
+    ],
+    "states": []
+  },
+  {
+    "id": 90,
+    "name": "Lexington Civic Alliance",
+    "website": "https://www.lexingtoncivicky.org",
+    "scope": "local",
+    "city": "Louisville",
+    "hqState": "",
+    "mission": "Providing legal support for voting rights cases",
+    "fips": [
+      21067,
+      21113
+    ],
+    "states": []
+  },
+  {
+    "id": 91,
+    "name": "New Orleans Civic Lab",
+    "website": "https://www.nociviclab.org",
+    "scope": "local",
+    "city": "New Orleans",
+    "hqState": "",
+    "mission": "Advocating for ranked-choice voting at the state level",
+    "fips": [
+      22071,
+      22103,
+      22051
+    ],
+    "states": []
+  },
+  {
+    "id": 92,
+    "name": "Baton Rouge Democracy Project",
+    "website": "https://www.batondemo.org",
+    "scope": "local",
+    "city": "New Orleans",
+    "hqState": "",
+    "mission": "Connecting local leaders across our network",
+    "fips": [
+      22033,
+      22063
+    ],
+    "states": []
+  },
+  {
+    "id": 93,
+    "name": "Portland ME Civic Forum",
+    "website": "https://www.portlandmecivic.org",
+    "scope": "local",
+    "city": "Portland",
+    "hqState": "",
+    "mission": "Connecting local leaders across our network",
+    "fips": [
+      23005,
+      23031
+    ],
+    "states": []
+  },
+  {
+    "id": 94,
+    "name": "Baltimore Civic Alliance",
+    "website": "https://www.bmorecivic.org",
+    "scope": "local",
+    "city": "Baltimore",
+    "hqState": "",
+    "mission": "Facilitating cross-partisan conversations",
+    "fips": [
+      24510,
+      24005
+    ],
+    "states": []
+  },
+  {
+    "id": 95,
+    "name": "Montgomery County Civic Hub",
+    "website": "https://www.montgomerycivicmd.org",
+    "scope": "local",
+    "city": "Baltimore",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [
+      24031,
+      24021
+    ],
+    "states": []
+  },
+  {
+    "id": 96,
+    "name": "Greater Boston Civic Lab",
+    "website": "https://www.bostonciviclab.org",
+    "scope": "local",
+    "city": "Boston",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [
+      25017,
+      25025,
+      25021
+    ],
+    "states": []
+  },
+  {
+    "id": 97,
+    "name": "Western Mass Civic Alliance",
+    "website": "https://www.westmasscivic.org",
+    "scope": "local",
+    "city": "Boston",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [
+      25013,
+      25015
+    ],
+    "states": []
+  },
+  {
+    "id": 98,
+    "name": "Detroit Metro Civic Forum",
+    "website": "https://www.detroitcivicforum.org",
+    "scope": "local",
+    "city": "Detroit",
+    "hqState": "",
+    "mission": "Building technology tools for civic participation",
+    "fips": [
+      26163,
+      26125,
+      26099
+    ],
+    "states": []
+  },
+  {
+    "id": 99,
+    "name": "Grand Rapids Civic Hub",
+    "website": "https://www.grandrpidscivic.org",
+    "scope": "local",
+    "city": "Detroit",
+    "hqState": "",
+    "mission": "Providing training and capacity building for grassroots groups",
+    "fips": [
+      26081,
+      26139
+    ],
+    "states": []
+  },
+  {
+    "id": 100,
+    "name": "Twin Cities Civic Alliance",
+    "website": "https://www.twincitescivic.org",
+    "scope": "local",
+    "city": "Minneapolis",
+    "hqState": "",
+    "mission": "Supporting rural leaders through peer networks",
+    "fips": [
+      27053,
+      27123,
+      27037
+    ],
+    "states": []
+  },
+  {
+    "id": 101,
+    "name": "Greater Duluth Civic Forum",
+    "website": "https://www.duluthcivic.org",
+    "scope": "local",
+    "city": "Minneapolis",
+    "hqState": "",
+    "mission": "Providing legal support for voting rights cases",
+    "fips": [
+      27137,
+      27017
+    ],
+    "states": []
+  },
+  {
+    "id": 102,
+    "name": "Jackson Metro Civic Hub",
+    "website": "https://www.jacksoncivic.org",
+    "scope": "local",
+    "city": "Jackson",
+    "hqState": "",
+    "mission": "Connecting local leaders across our network",
+    "fips": [
+      28049,
+      28121,
+      28089
+    ],
+    "states": []
+  },
+  {
+    "id": 103,
+    "name": "St. Louis Civic Alliance",
+    "website": "https://www.stlcivic.org",
+    "scope": "local",
+    "city": "Kansas City",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [
+      29510,
+      29510
+    ],
+    "states": []
+  },
+  {
+    "id": 104,
+    "name": "Kansas City Civic Lab",
+    "website": "https://www.kcciviclab.org",
+    "scope": "local",
+    "city": "Kansas City",
+    "hqState": "",
+    "mission": "Providing legal support for voting rights cases",
+    "fips": [
+      29095,
+      29047,
+      29165
+    ],
+    "states": []
+  },
+  {
+    "id": 105,
+    "name": "Billings Civic Forum",
+    "website": "https://www.billingscivic.org",
+    "scope": "local",
+    "city": "Billings",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [
+      30111,
+      30009
+    ],
+    "states": []
+  },
+  {
+    "id": 106,
+    "name": "Omaha Civic Alliance",
+    "website": "https://www.omahacivic.org",
+    "scope": "local",
+    "city": "Omaha",
+    "hqState": "",
+    "mission": "Hosting community dialogue events",
+    "fips": [
+      31055,
+      31153
+    ],
+    "states": []
+  },
+  {
+    "id": 107,
+    "name": "Las Vegas Civic Hub",
+    "website": "https://www.lvhub.org",
+    "scope": "local",
+    "city": "Las Vegas",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [
+      32003
+    ],
+    "states": []
+  },
+  {
+    "id": 108,
+    "name": "Reno Civic Coalition",
+    "website": "https://www.renocivic.org",
+    "scope": "local",
+    "city": "Las Vegas",
+    "hqState": "",
+    "mission": "Connecting local leaders across our network",
+    "fips": [
+      32031,
+      32510
+    ],
+    "states": []
+  },
+  {
+    "id": 109,
+    "name": "Manchester Civic Alliance",
+    "website": "https://www.manchestercivic.org",
+    "scope": "local",
+    "city": "Manchester",
+    "hqState": "",
+    "mission": "Conducting nonpartisan voter registration drives",
+    "fips": [
+      33011,
+      33015
+    ],
+    "states": []
+  },
+  {
+    "id": 110,
+    "name": "Newark Civic Alliance",
+    "website": "https://www.newarkcivic.org",
+    "scope": "local",
+    "city": "Newark",
+    "hqState": "",
+    "mission": "Offering research and data to support local organizers",
+    "fips": [
+      34013,
+      34017
+    ],
+    "states": []
+  },
+  {
+    "id": 111,
+    "name": "South Jersey Civic Hub",
+    "website": "https://www.sjcivic.org",
+    "scope": "local",
+    "city": "Newark",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [
+      34007,
+      34005,
+      34015
+    ],
+    "states": []
+  },
+  {
+    "id": 112,
+    "name": "Albuquerque Civic Lab",
+    "website": "https://www.abqciviclab.org",
+    "scope": "local",
+    "city": "Albuquerque",
+    "hqState": "",
+    "mission": "Conducting nonpartisan voter registration drives",
+    "fips": [
+      35001,
+      35043
+    ],
+    "states": []
+  },
+  {
+    "id": 113,
+    "name": "NYC Civic Alliance",
+    "website": "https://www.nyccivicalliance.org",
+    "scope": "local",
+    "city": "New York",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [
+      36047,
+      36081,
+      36061,
+      36005,
+      36085
+    ],
+    "states": []
+  },
+  {
+    "id": 114,
+    "name": "Upstate NY Civic Forum",
+    "website": "https://www.upstatecivic.org",
+    "scope": "local",
+    "city": "New York",
+    "hqState": "",
+    "mission": "Facilitating cross-partisan conversations",
+    "fips": [
+      36029,
+      36055,
+      36067
+    ],
+    "states": []
+  },
+  {
+    "id": 115,
+    "name": "Hudson Valley Civic Hub",
+    "website": "https://www.hudsonvalleycivic.org",
+    "scope": "local",
+    "city": "New York",
+    "hqState": "",
+    "mission": "Offering research and data to support local organizers",
+    "fips": [
+      36119,
+      36027,
+      36111
+    ],
+    "states": []
+  },
+  {
+    "id": 116,
+    "name": "Charlotte Metro Civic Lab",
+    "website": "https://www.charlotteciviclab.org",
+    "scope": "local",
+    "city": "Charlotte",
+    "hqState": "",
+    "mission": "Conducting nonpartisan voter registration drives",
+    "fips": [
+      37119,
+      37179,
+      37025
+    ],
+    "states": []
+  },
+  {
+    "id": 117,
+    "name": "Triangle Civic Alliance",
+    "website": "https://www.trianglecivic.org",
+    "scope": "local",
+    "city": "Charlotte",
+    "hqState": "",
+    "mission": "Advocating for ranked-choice voting at the state level",
+    "fips": [
+      37183,
+      37063,
+      37135
+    ],
+    "states": []
+  },
+  {
+    "id": 118,
+    "name": "Asheville Civic Forum",
+    "website": "https://www.ashevillecivic.org",
+    "scope": "local",
+    "city": "Charlotte",
+    "hqState": "",
+    "mission": "Facilitating cross-partisan conversations",
+    "fips": [
+      37021,
+      37089,
+      37087
+    ],
+    "states": []
+  },
+  {
+    "id": 119,
+    "name": "Columbus Civic Alliance",
+    "website": "https://www.columbuscivic.org",
+    "scope": "local",
+    "city": "Columbus",
+    "hqState": "",
+    "mission": "Running civic education programs in K-12 schools",
+    "fips": [
+      39049,
+      39041,
+      39089
+    ],
+    "states": []
+  },
+  {
+    "id": 120,
+    "name": "Cleveland Civic Hub",
+    "website": "https://www.clevelandcivic.org",
+    "scope": "local",
+    "city": "Columbus",
+    "hqState": "",
+    "mission": "Connecting local leaders across our network",
+    "fips": [
+      39035,
+      39085,
+      39093
+    ],
+    "states": []
+  },
+  {
+    "id": 121,
+    "name": "Cincinnati Civic Lab",
+    "website": "https://www.cincinnaticivic.org",
+    "scope": "local",
+    "city": "Columbus",
+    "hqState": "",
+    "mission": "Providing legal support for voting rights cases",
+    "fips": [
+      39061,
+      39017,
+      39165
+    ],
+    "states": []
+  },
+  {
+    "id": 122,
+    "name": "Oklahoma City Civic Alliance",
+    "website": "https://www.okccivic.org",
+    "scope": "local",
+    "city": "Oklahoma City",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [
+      40109,
+      40027,
+      40017
+    ],
+    "states": []
+  },
+  {
+    "id": 123,
+    "name": "Tulsa Civic Forum",
+    "website": "https://www.tulsacivic.org",
+    "scope": "local",
+    "city": "Oklahoma City",
+    "hqState": "",
+    "mission": "Mobilizing volunteers in underserved communities",
+    "fips": [
+      40143,
+      40145,
+      40131
+    ],
+    "states": []
+  },
+  {
+    "id": 124,
+    "name": "Portland OR Civic Hub",
+    "website": "https://www.portlandorcivic.org",
+    "scope": "local",
+    "city": "Portland",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [
+      41051,
+      41067,
+      41005
+    ],
+    "states": []
+  },
+  {
+    "id": 125,
+    "name": "Eugene Civic Alliance",
+    "website": "https://www.eugenecivic.org",
+    "scope": "local",
+    "city": "Portland",
+    "hqState": "",
+    "mission": "Building technology tools for civic participation",
+    "fips": [
+      41039
+    ],
+    "states": []
+  },
+  {
+    "id": 126,
+    "name": "Philadelphia Civic Lab",
+    "website": "https://www.philaciviclab.org",
+    "scope": "local",
+    "city": "Philadelphia",
+    "hqState": "",
+    "mission": "Providing legal support for voting rights cases",
+    "fips": [
+      42101,
+      42091,
+      42045
+    ],
+    "states": []
+  },
+  {
+    "id": 127,
+    "name": "Pittsburgh Civic Alliance",
+    "website": "https://www.pgcivicalliance.org",
+    "scope": "local",
+    "city": "Philadelphia",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [
+      42003,
+      42129,
+      42019
+    ],
+    "states": []
+  },
+  {
+    "id": 128,
+    "name": "Providence Civic Hub",
+    "website": "https://www.providencecivic.org",
+    "scope": "local",
+    "city": "Providence",
+    "hqState": "",
+    "mission": "Facilitating cross-partisan conversations",
+    "fips": [
+      44007,
+      44003
+    ],
+    "states": []
+  },
+  {
+    "id": 129,
+    "name": "Charleston Civic Alliance",
+    "website": "https://www.charlestoncivic.org",
+    "scope": "local",
+    "city": "Columbia",
+    "hqState": "",
+    "mission": "Advocating for ranked-choice voting at the state level",
+    "fips": [
+      45019,
+      45035,
+      45015
+    ],
+    "states": []
+  },
+  {
+    "id": 130,
+    "name": "Upstate SC Civic Hub",
+    "website": "https://www.upstatescivic.org",
+    "scope": "local",
+    "city": "Columbia",
+    "hqState": "",
+    "mission": "Providing training and capacity building for grassroots groups",
+    "fips": [
+      45045,
+      45083,
+      45007
+    ],
+    "states": []
+  },
+  {
+    "id": 131,
+    "name": "Nashville Civic Lab",
+    "website": "https://www.nashvilleciviclab.org",
+    "scope": "local",
+    "city": "Nashville",
+    "hqState": "",
+    "mission": "Building technology tools for civic participation",
+    "fips": [
+      47037,
+      47187,
+      47149
+    ],
+    "states": []
+  },
+  {
+    "id": 132,
+    "name": "Memphis Civic Alliance",
+    "website": "https://www.memphiscivic.org",
+    "scope": "local",
+    "city": "Nashville",
+    "hqState": "",
+    "mission": "Providing training and capacity building for grassroots groups",
+    "fips": [
+      47157,
+      47167
+    ],
+    "states": []
+  },
+  {
+    "id": 133,
+    "name": "Knoxville Civic Forum",
+    "website": "https://www.knoxcivic.org",
+    "scope": "local",
+    "city": "Nashville",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [
+      47093,
+      47009,
+      47001
+    ],
+    "states": []
+  },
+  {
+    "id": 134,
+    "name": "Houston Civic Alliance",
+    "website": "https://www.houstoncivic.org",
+    "scope": "local",
+    "city": "Houston",
+    "hqState": "",
+    "mission": "Providing legal support for voting rights cases",
+    "fips": [
+      48201,
+      48157,
+      48339
+    ],
+    "states": []
+  },
+  {
+    "id": 135,
+    "name": "Dallas-Fort Worth Civic Hub",
+    "website": "https://www.dfwcivic.org",
+    "scope": "local",
+    "city": "Houston",
+    "hqState": "",
+    "mission": "Running civic education programs in K-12 schools",
+    "fips": [
+      48113,
+      48439,
+      48085,
+      48121
+    ],
+    "states": []
+  },
+  {
+    "id": 136,
+    "name": "Austin Civic Lab",
+    "website": "https://www.austinciviclab.org",
+    "scope": "local",
+    "city": "Houston",
+    "hqState": "",
+    "mission": "Building technology tools for civic participation",
+    "fips": [
+      48453,
+      48491,
+      48209
+    ],
+    "states": []
+  },
+  {
+    "id": 137,
+    "name": "San Antonio Civic Forum",
+    "website": "https://www.sacivicforum.org",
+    "scope": "local",
+    "city": "Houston",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [
+      48029,
+      48187
+    ],
+    "states": []
+  },
+  {
+    "id": 138,
+    "name": "Rio Grande Valley Civic Hub",
+    "website": "https://www.rgvcivic.org",
+    "scope": "local",
+    "city": "Houston",
+    "hqState": "",
+    "mission": "Building technology tools for civic participation",
+    "fips": [
+      48215,
+      48061,
+      48427
+    ],
+    "states": []
+  },
+  {
+    "id": 139,
+    "name": "Salt Lake Civic Alliance",
+    "website": "https://www.saltlakecivic.org",
+    "scope": "local",
+    "city": "Salt Lake City",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [
+      49035,
+      49049,
+      49011
+    ],
+    "states": []
+  },
+  {
+    "id": 140,
+    "name": "Burlington Civic Hub",
+    "website": "https://www.burlingtoncivic.org",
+    "scope": "local",
+    "city": "Burlington",
+    "hqState": "",
+    "mission": "Supporting rural leaders through peer networks",
+    "fips": [
+      50007,
+      50011
+    ],
+    "states": []
+  },
+  {
+    "id": 141,
+    "name": "Northern Virginia Civic Lab",
+    "website": "https://www.novaciviclab.org",
+    "scope": "local",
+    "city": "Richmond",
+    "hqState": "",
+    "mission": "Advocating for ranked-choice voting at the state level",
+    "fips": [
+      51600,
+      51153,
+      51107,
+      51013
+    ],
+    "states": []
+  },
+  {
+    "id": 142,
+    "name": "Richmond Civic Alliance",
+    "website": "https://www.richmondcivic.org",
+    "scope": "local",
+    "city": "Richmond",
+    "hqState": "",
+    "mission": "Offering research and data to support local organizers",
+    "fips": [
+      51087,
+      51041
+    ],
+    "states": []
+  },
+  {
+    "id": 143,
+    "name": "Seattle Civic Hub",
+    "website": "https://www.seattlecivic.org",
+    "scope": "local",
+    "city": "Seattle",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [
+      53033,
+      53053,
+      53061
+    ],
+    "states": []
+  },
+  {
+    "id": 144,
+    "name": "Spokane Civic Alliance",
+    "website": "https://www.spokanecivic.org",
+    "scope": "local",
+    "city": "Seattle",
+    "hqState": "",
+    "mission": "Amplifying local stories through our media platform",
+    "fips": [
+      53063,
+      53075
+    ],
+    "states": []
+  },
+  {
+    "id": 145,
+    "name": "Charleston WV Civic Forum",
+    "website": "https://www.charlestonwvcivic.org",
+    "scope": "local",
+    "city": "Charleston",
+    "hqState": "",
+    "mission": "Publishing investigative journalism on civic health",
+    "fips": [
+      54039,
+      54079,
+      54005
+    ],
+    "states": []
+  },
+  {
+    "id": 146,
+    "name": "Morgantown Civic Alliance",
+    "website": "https://www.morgantowncivic.org",
+    "scope": "local",
+    "city": "Charleston",
+    "hqState": "",
+    "mission": "Building technology tools for civic participation",
+    "fips": [
+      54061,
+      54049,
+      54091
+    ],
+    "states": []
+  },
+  {
+    "id": 147,
+    "name": "Milwaukee Civic Lab",
+    "website": "https://www.milwaukeeciviclab.org",
+    "scope": "local",
+    "city": "Milwaukee",
+    "hqState": "",
+    "mission": "Connecting local leaders across our network",
+    "fips": [
+      55079,
+      55133,
+      55101
+    ],
+    "states": []
+  },
+  {
+    "id": 148,
+    "name": "Madison Civic Alliance",
+    "website": "https://www.madisoncivic.org",
+    "scope": "local",
+    "city": "Milwaukee",
+    "hqState": "",
+    "mission": "Connecting local leaders across our network",
+    "fips": [
+      55025,
+      55111,
+      55021
+    ],
+    "states": []
+  },
+  {
+    "id": 149,
+    "name": "Cheyenne Civic Forum",
+    "website": "https://www.cheyennecivic.org",
+    "scope": "local",
+    "city": "Cheyenne",
+    "hqState": "",
+    "mission": "Training journalists in solutions-focused reporting",
+    "fips": [
+      56021,
+      56031
+    ],
+    "states": []
+  }
+]
