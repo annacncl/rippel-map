@@ -932,11 +932,12 @@ function updateMapColors() {
 
   const matchPairs = [];
   for (const [fips, count] of Object.entries(cachedDensity)) {
-    matchPairs.push(parseInt(fips), getDensityColor(count, minVal, maxVal));
+    // Tileset stores FIPS as strings — must match with strings
+    matchPairs.push(String(parseInt(fips)), getDensityColor(count, minVal, maxVal));
   }
 
   map.setPaintProperty('county-fills', 'fill-color', [
-    'match', ['get', 'FIPS'],
+    'match', ['to-string', ['get', 'FIPS']],
     ...matchPairs,
     COLOR_RAMP[0]
   ]);
@@ -953,7 +954,7 @@ function renderOrgList() {
   if (selectedFips) {
     toShow = filtered.filter(org => {
       const fips = getOrgFips(org);
-      return fips.includes(selectedFips);
+      return fips.map(String).includes(String(selectedFips));
     });
   }
 
@@ -1002,9 +1003,10 @@ function showOrgDetail(org) {
   const fips = getOrgFips(org);
   if (!fips.length) return;
 
-  // Highlight counties — FIPS in tileset are numbers, use numeric match
+  // Convert fips to strings to match tileset format
+  const fipsStrings = fips.map(f => String(f));
   map.setFilter('county-fills-highlight', [
-    'in', ['get', 'FIPS'], ['literal', fips]
+    'in', ['to-string', ['get', 'FIPS']], ['literal', fipsStrings]
   ]);
 
   // Auto-zoom using state bounding boxes — reliable regardless of which
