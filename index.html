@@ -770,8 +770,10 @@ function getOrgFips(org) {
 // DENSITY COMPUTATION
 // ═══════════════════════════════════════════════════════════
 function computeDensity(orgs) {
+  // Only count local orgs in density — statewide handled separately in updateMapColors
+  // to avoid blowing past the Mapbox match expression limit
   const density = {};
-  orgs.filter(o => o.scope !== 'national').forEach(org => {
+  orgs.filter(o => o.scope === 'local').forEach(org => {
     getOrgFips(org).forEach(fips => {
       density[fips] = (density[fips] || 0) + 1;
     });
@@ -925,22 +927,84 @@ function updateMapColors() {
   const minVal = vals.length ? Math.min(...vals) : 0;
   const maxVal = vals.length ? Math.max(...vals) : 1;
 
-  if (Object.keys(cachedDensity).length === 0) {
-    map.setPaintProperty('county-fills', 'fill-color', COLOR_RAMP[0]);
-    return;
+  // Build a GeoJSON source with one feature per FIPS that has a count.
+  // We join this to the county tileset using a data-driven style expression.
+  // This avoids the ~500 entry limit on Mapbox match expressions.
+  const features = Object.entries(cachedDensity).map(([fips, count]) => ({
+    type: 'Feature',
+    properties: { FIPS: parseInt(fips), count, color: getDensityColor(count, minVal, maxVal) },
+    geometry: { type: 'Point', coordinates: [0, 0] } // geometry not used, only properties
+  }));
+
+  // Update or create the lookup source
+  if (map.getSource('density-lookup')) {
+    map.getSource('density-lookup').setData({ type: 'FeatureCollection', features });
+  } else {
+    map.addSource('density-lookup', {
+      type: 'geojson',
+      data: { type: 'FeatureCollection', features }
+    });
   }
 
+  // Use a step-based approach: build match expression but ONLY for local orgs
+  // (which have at most 230 unique FIPS — well within the limit).
+  // Statewide orgs are handled separately by coloring entire states.
+  
+  // Split density into local-only and statewide-boosted
+  const localDensity = {};
+  const statewideOnlyFips = new Set();
+  
+  filterOrgs().filter(o => o.scope !== 'national').forEach(org => {
+    const fips = getOrgFips(org);
+    fips.forEach(f => {
+      if (org.scope === 'local') {
+        localDensity[f] = (localDensity[f] || 0) + 1;
+      } else {
+        statewideOnlyFips.add(f);
+      }
+    });
+  });
+
+  // All FIPS that appear in local density
+  const localVals = Object.values(localDensity).filter(v => v > 0);
+  const localMin = localVals.length ? Math.min(...localVals) : 0;
+  const localMax = localVals.length ? Math.max(...localVals) : 1;
+
+  // Build match expression from local orgs only (~230 entries, safe)
   const matchPairs = [];
-  for (const [fips, count] of Object.entries(cachedDensity)) {
-    // Tileset stores FIPS as numbers — match with integers
-    matchPairs.push(parseInt(fips), getDensityColor(count, minVal, maxVal));
+  for (const [fips, count] of Object.entries(localDensity)) {
+    matchPairs.push(parseInt(fips), getDensityColor(count, localMin, localMax));
   }
 
-  map.setPaintProperty('county-fills', 'fill-color', [
-    'match', ['get', 'FIPS'],
-    ...matchPairs,
-    COLOR_RAMP[0]
-  ]);
+  // Statewide floor color (counties covered by statewide orgs but no local org)
+  const statewideColor = COLOR_RAMP[1]; // lightest purple — shows statewide presence
+
+  // Build statewide FIPS match (these are whole-state FIPS sets, grouped)
+  // We color statewide-only counties with a flat light purple
+  // and local counties with the density gradient on top
+  const statewideMatchPairs = [];
+  for (const fips of statewideOnlyFips) {
+    if (!localDensity[fips]) {
+      statewideMatchPairs.push(fips, statewideColor);
+    }
+  }
+
+  let colorExpr;
+  if (matchPairs.length > 0 && statewideMatchPairs.length > 0) {
+    colorExpr = ['match', ['get', 'FIPS'],
+      ...matchPairs,        // local org counties — density gradient
+      ...statewideMatchPairs, // statewide-only counties — flat light purple
+      COLOR_RAMP[0]         // no orgs — empty
+    ];
+  } else if (matchPairs.length > 0) {
+    colorExpr = ['match', ['get', 'FIPS'], ...matchPairs, COLOR_RAMP[0]];
+  } else if (statewideMatchPairs.length > 0) {
+    colorExpr = ['match', ['get', 'FIPS'], ...statewideMatchPairs, COLOR_RAMP[0]];
+  } else {
+    colorExpr = COLOR_RAMP[0];
+  }
+
+  map.setPaintProperty('county-fills', 'fill-color', colorExpr);
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -1006,7 +1070,7 @@ function showOrgDetail(org) {
   // Tileset stores FIPS as numbers — match with integers
   console.log('Applying highlight filter with integer fips:', fips);
   map.setFilter('county-fills-highlight', [
-    'in', ['get', 'FIPS'], ['literal', fips]
+    'match', ['get', 'FIPS'], fips, true, false
   ]);
 
   // Auto-zoom using state bounding boxes — reliable regardless of which
