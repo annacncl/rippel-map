@@ -353,7 +353,7 @@ map.on('load', () => {
     if (!e.features.length) return;
     map.getCanvas().style.cursor = 'pointer';
     const props = e.features[0].properties;
-    const count = fullDensity[props.FIPS] || 0;
+    const count = fullDensity[parseInt(props.FIPS)] || 0;
     const tt = document.getElementById('tooltip');
     tt.classList.add('visible');
     tt.style.left = (e.point.x + 16) + 'px';
@@ -368,7 +368,7 @@ map.on('load', () => {
 
   map.on('click', 'county-fills', (e) => {
     if (!e.features.length) return;
-    const fips = e.features[0].properties.FIPS;
+    const fips = parseInt(e.features[0].properties.FIPS);
     clearHighlight();
     if (selectedFips === fips) { selectedFips = null; }
     else {
