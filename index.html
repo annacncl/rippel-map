@@ -117,7 +117,9 @@
   .org-scope-tag { font-size:10px; padding:2px 7px; border-radius:100px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; flex-shrink:0; }
   .org-scope-tag.statewide { background:rgba(45,212,191,0.15); color:var(--rippel-teal); }
   .org-scope-tag.local { background:rgba(251,191,36,0.15); color:#FBBF24; }
-  .org-list-count { font-size:11px; color:var(--text-dim); margin-top:6px; flex-shrink:0; }
+  .org-list-count { font-size:11px; color:var(--text-dim); flex-shrink:0; }
+  .clear-selection-btn { font-size:11px; color:var(--rippel-teal); background:none; border:none; font-family:inherit; cursor:pointer; padding:0; flex-shrink:0; }
+  .clear-selection-btn:hover { text-decoration:underline; }
 
   .org-detail { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:12px; font-size:12px; display:none; }
   .org-detail.visible { display:block; }
@@ -184,7 +186,10 @@
   <div class="org-list-section">
     <h3>Statewide &amp; Local Organizations</h3>
     <div class="org-list" id="org-list"></div>
-    <div class="org-list-count" id="org-list-count"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+      <div class="org-list-count" id="org-list-count"></div>
+      <button class="clear-selection-btn" id="clear-selection-btn" style="display:none">✕ Clear selection</button>
+    </div>
   </div>
   <div class="org-detail" id="org-detail">
     <div class="od-name" id="od-name"></div>
@@ -437,6 +442,7 @@ function renderOrgList() {
   }).join('');
   if (orgs.length > 200) container.innerHTML += `<div style="padding:8px 10px;font-size:11px;color:var(--text-dim);text-align:center">+${orgs.length-200} more</div>`;
   document.getElementById('org-list-count').textContent = selectedFips ? `${orgs.length} in selected county` : `${orgs.length} organizations`;
+  document.getElementById('clear-selection-btn').style.display = selectedFips ? 'block' : 'none';
   container.querySelectorAll('.org-item').forEach(el => {
     el.addEventListener('click', () => {
       const org = allOrgs.find(o => o.id === parseInt(el.dataset.id));
@@ -498,10 +504,17 @@ document.querySelectorAll('.scope-btn').forEach(btn => {
 
 document.getElementById('org-search').addEventListener('input', e => {
   filterState.search = e.target.value;
-  selectedFips = null; clearOrgDetail(); updateAll();
+  selectedFips = null; clearHighlight(); clearOrgDetail(); updateAll();
 });
 
 document.getElementById('od-clear').addEventListener('click', () => { clearOrgDetail(); renderOrgList(); });
+
+document.getElementById('clear-selection-btn').addEventListener('click', () => {
+  selectedFips = null;
+  clearHighlight();
+  clearOrgDetail();
+  renderOrgList();
+});
 
 document.getElementById('sidebar-toggle').addEventListener('click', () => {
   const sb = document.getElementById('sidebar');
