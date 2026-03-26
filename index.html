@@ -824,7 +824,7 @@ map.on('load', () => {
     type: 'line',
     source: 'counties',
     'source-layer': 'original',
-    filter: ['==', ['get', 'FIPS'], '-1'],
+    filter: ['==', ['get', 'FIPS'], -1],
     paint: { 'line-color': '#f59e0b', 'line-width': 2.5, 'line-opacity': 1 }
   }, 'waterway-label');
 
@@ -878,10 +878,10 @@ map.on('load', () => {
     if (selectedFips === fips) {
       // deselect
       selectedFips = null;
-      map.setFilter('county-fills-highlight', ['==', ['get', 'FIPS'], '-1']);
+      map.setFilter('county-fills-highlight', ['==', ['get', 'FIPS'], -1]);
     } else {
       selectedFips = fips;
-      map.setFilter('county-fills-highlight', ['==', ['to-string', ['get', 'FIPS']], String(fips)]);
+      map.setFilter('county-fills-highlight', ['==', ['get', 'FIPS'], fips]);
     }
     clearOrgDetail();
     renderOrgList();
@@ -932,12 +932,12 @@ function updateMapColors() {
 
   const matchPairs = [];
   for (const [fips, count] of Object.entries(cachedDensity)) {
-    // Tileset stores FIPS as strings — must match with strings
-    matchPairs.push(String(parseInt(fips)), getDensityColor(count, minVal, maxVal));
+    // Tileset stores FIPS as numbers — match with integers
+    matchPairs.push(parseInt(fips), getDensityColor(count, minVal, maxVal));
   }
 
   map.setPaintProperty('county-fills', 'fill-color', [
-    'match', ['to-string', ['get', 'FIPS']],
+    'match', ['get', 'FIPS'],
     ...matchPairs,
     COLOR_RAMP[0]
   ]);
@@ -954,7 +954,7 @@ function renderOrgList() {
   if (selectedFips) {
     toShow = filtered.filter(org => {
       const fips = getOrgFips(org);
-      return fips.map(String).includes(String(selectedFips));
+      return fips.includes(Number(selectedFips));
     });
   }
 
@@ -1003,22 +1003,10 @@ function showOrgDetail(org) {
   const fips = getOrgFips(org);
   if (!fips.length) return;
 
-  // Convert fips to strings to match tileset format
-  const fipsStrings = fips.map(f => String(f));
-  console.log('Org:', org.name);
-  console.log('FIPS integers:', fips);
-  console.log('FIPS strings:', fipsStrings);
-  
-  // Test what the tileset actually has loaded at this point
-  const loaded = map.querySourceFeatures('counties', { sourceLayer: 'original' });
-  console.log('Total loaded county features:', loaded.length);
-  if (loaded.length > 0) {
-    console.log('Sample FIPS values from tileset:', loaded.slice(0,5).map(f => f.properties.FIPS), 
-      'types:', loaded.slice(0,5).map(f => typeof f.properties.FIPS));
-  }
-  
+  // Tileset stores FIPS as numbers — match with integers
+  console.log('Applying highlight filter with integer fips:', fips);
   map.setFilter('county-fills-highlight', [
-    'in', ['to-string', ['get', 'FIPS']], ['literal', fipsStrings]
+    'in', ['get', 'FIPS'], ['literal', fips]
   ]);
 
   // Auto-zoom using state bounding boxes — reliable regardless of which
@@ -1076,7 +1064,7 @@ function clearOrgDetail() {
   selectedOrg = null;
   document.getElementById('org-detail').classList.remove('visible');
   if (mapReady) {
-    map.setFilter('county-fills-highlight', ['==', ['get', 'FIPS'], '-1']);
+    map.setFilter('county-fills-highlight', ['==', ['get', 'FIPS'], -1]);
   }
 }
 
@@ -1127,7 +1115,7 @@ document.querySelectorAll('.scope-btn').forEach(btn => {
     btn.classList.add('active');
     filterState.scope = btn.dataset.scope;
     selectedFips = null;
-    if (mapReady) map.setFilter('county-fills-highlight', ['==', ['get', 'FIPS'], '-1']);
+    if (mapReady) map.setFilter('county-fills-highlight', ['==', ['get', 'FIPS'], -1]);
     clearOrgDetail();
     updateAll();
   });
