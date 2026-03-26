@@ -378,6 +378,7 @@ map.on('load', () => {
     if (selectedFips === fips) { selectedFips = null; }
     else {
       selectedFips = fips;
+      highlightedFips = [String(fips)];
       map.setFeatureState({source:'counties',sourceLayer:'original',id:fips},{highlighted:true});
     }
     clearOrgDetail();
