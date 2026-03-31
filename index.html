@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rippel Foundation Map</title>
+<title>Rippel Foundation — Ecosystem Density Map</title>
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
@@ -41,10 +41,10 @@
   .stat-value { font-weight:600; color:var(--rippel-teal); font-variant-numeric:tabular-nums; }
   .stat-label { color:var(--text-dim); margin-left:6px; }
 
-  #map { position:absolute; inset:0; top:80px; }
+  #map { position:absolute; inset:0; top:57px; }
 
   .sidebar {
-    position:fixed; top:80px; left:0; bottom:0; width:300px; z-index:90;
+    position:fixed; top:57px; left:0; bottom:0; width:300px; z-index:90;
     background:rgba(15,17,20,0.92); backdrop-filter:blur(24px);
     border-right:1px solid var(--border); overflow-y:auto; padding:18px;
     display:flex; flex-direction:column; gap:18px; transition:transform 0.3s ease;
@@ -64,7 +64,7 @@
   .sidebar.collapsed ~ .sidebar-toggle { left:0; }
 
   .national-panel {
-    position:fixed; top:80px; right:0; bottom:0; width:280px; z-index:90;
+    position:fixed; top:57px; right:0; bottom:0; width:280px; z-index:90;
     background:rgba(15,17,20,0.92); backdrop-filter:blur(24px);
     border-left:1px solid var(--border); display:flex; flex-direction:column;
     transition:transform 0.3s ease;
@@ -161,7 +161,7 @@
 <header class="header">
   <div class="header-brand">
     <div class="logo-mark"></div>
-    <h1>Thriving Together :<br><span>Who's Committed to Help Make Great Strides?</span></h1>
+    <h1>Rippel Foundation <span>Ecosystem Map</span></h1>
   </div>
   <div class="header-stats">
     <div><span class="stat-value" id="stat-orgs">—</span><span class="stat-label">organizations</span></div>
@@ -184,7 +184,7 @@
     </div>
   </div>
   <div class="org-list-section">
-    <h3>Place-Based Influence</h3>
+    <h3>Statewide &amp; Local Organizations</h3>
     <div class="org-list" id="org-list"></div>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
       <div class="org-list-count" id="org-list-count"></div>
@@ -202,7 +202,7 @@
 
 <aside class="national-panel" id="national-panel">
   <div class="national-panel-header">
-    <h3>Nationwide Influence</h3>
+    <h3>National Organizations</h3>
     <span class="national-count" id="national-count"></span>
   </div>
   <div class="national-panel-note">These organizations work nationwide and appear here rather than on the heat map.</div>
@@ -317,7 +317,7 @@ map.on('load', () => {
         'case',
         ['>', ['coalesce', ['feature-state', 'count'], 0], 0],
         ['interpolate', ['linear'], ['feature-state', 'count'],
-          1, C[0], 2, C[1], 3, C[2], 4, C[3], 6, C[4], 9, C[5], 12, C[6]
+          7, C[0], 20, C[1], 35, C[2], 55, C[3], 80, C[4], 120, C[5], 180, C[6]
         ],
         'rgba(0,0,0,0)'
       ],
