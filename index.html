@@ -144,8 +144,30 @@
   .tt-label { color:var(--text-dim); font-size:11px; }
   .tt-hint { color:var(--text-dim); font-size:10px; margin-top:5px; font-style:italic; }
 
-  .info-banner { position:fixed; bottom:28px; left:50%; transform:translateX(-50%); z-index:90; background:rgba(26,29,34,0.92); backdrop-filter:blur(16px); border:1px solid var(--border); border-radius:var(--radius-lg); padding:10px 18px; font-size:12px; color:var(--text-dim); display:flex; align-items:center; gap:8px; white-space:nowrap; }
-  .pulse { width:7px; height:7px; border-radius:50%; background:var(--rippel-teal); animation:pulse-anim 2s infinite; flex-shrink:0; }
+  .about-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+    background: rgba(15,17,20,0.95); backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border);
+    transition: transform 0.3s ease;
+  }
+  .about-bar-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 24px; cursor: pointer;
+  }
+  .about-bar-header:hover { background: rgba(255,255,255,0.03); }
+  .about-bar-title {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-dim);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .about-bar-title .pulse { width:6px; height:6px; border-radius:50%; background:var(--rippel-teal); animation:pulse-anim 2s infinite; flex-shrink:0; }
+  .about-bar-toggle { font-size: 11px; color: var(--text-dim); }
+  .about-bar-body {
+    padding: 0 24px 16px;
+    font-size: 13px; color: var(--text-dim); line-height: 1.7;
+    max-width: 860px; display: none;
+  }
+  .about-bar-body.open { display: block; }
   @keyframes pulse-anim { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);} }
 
   .mapboxgl-ctrl-attrib { opacity:0.4; }
@@ -232,7 +254,15 @@
   <div class="tt-hint">Click to filter list</div>
 </div>
 
-<div class="info-banner"><div class="pulse"></div>Prototype — data from Rippel Airtable base</div>
+<div class="about-bar" id="about-bar">
+  <div class="about-bar-header" id="about-bar-header">
+    <div class="about-bar-title"><div class="pulse"></div>About This Map</div>
+    <span class="about-bar-toggle" id="about-bar-toggle">▲ Show</span>
+  </div>
+  <div class="about-bar-body" id="about-bar-body">
+    This map visualizes the ecosystem of organizations committed to helping make great strides toward thriving together. Each shaded county reflects the number of organizations actively working there — darker purple indicates greater organizational density. Statewide organizations are shown across all counties in their covered states. National organizations are listed in the panel at right. Use the filters on the left to explore by geographic scope, or click any county to see which organizations are active there.
+  </div>
+</div>
 
 <script>
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiYW5uYWNvcm4iLCJhIjoiY21oZzR0d2N1MGJrZzJrczd3YzQ5dTd2eCJ9.jy4VcpJX5fWUqTo-Pr6oZA';
@@ -493,7 +523,7 @@ fetch(ORGS_JSON_PATH).then(r=>r.json()).then(data => {
   allOrgs = data;
   const t = setInterval(() => { if(mapReady){clearInterval(t);updateAll();} }, 100);
 }).catch(() => {
-  document.querySelector('.info-banner').innerHTML = '<span style="color:#f87171">⚠ Could not load orgs.json — run via a local server</span>';
+  document.getElementById('about-bar-body').innerHTML = '<span style="color:#f87171">⚠ Could not load orgs.json — run via a local server</span>'; document.getElementById('about-bar-body').classList.add('open');
 });
 
 document.querySelectorAll('.scope-btn').forEach(btn => {
@@ -532,6 +562,13 @@ document.getElementById('national-panel-toggle').addEventListener('click', () =>
   document.getElementById('legend').classList.toggle('panel-collapsed', p.classList.contains('collapsed'));
   document.getElementById('national-panel-toggle').innerHTML = p.classList.contains('collapsed') ? '◀<br>Natl' : '▶<br>Natl';
   setTimeout(() => map.resize(), 350);
+});
+
+document.getElementById('about-bar-header').addEventListener('click', () => {
+  const body = document.getElementById('about-bar-body');
+  const toggle = document.getElementById('about-bar-toggle');
+  body.classList.toggle('open');
+  toggle.textContent = body.classList.contains('open') ? '▼ Hide' : '▲ Show';
 });
 </script>
 </body>
