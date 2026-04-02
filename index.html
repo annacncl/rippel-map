@@ -276,7 +276,7 @@
 
 <aside class="national-panel" id="national-panel">
   <div class="national-panel-header">
-    <h3>National Organizations</h3>
+    <h3>Nationwide Influence</h3>
     <span class="national-count" id="national-count"></span>
   </div>
   <div class="national-panel-note">These organizations work nationwide and appear here rather than on the heat map.</div>
@@ -435,6 +435,27 @@ map.on('load', () => {
   ];
   layersToHide.forEach(id => {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none');
+  });
+
+  // Add clean US outer boundary
+  map.addSource('us-outline', {
+    type: 'vector',
+    url: 'mapbox://mapbox.mapbox-streets-v8'
+  });
+  map.addLayer({
+    id: 'us-outline',
+    type: 'line',
+    source: 'us-outline',
+    'source-layer': 'admin',
+    filter: ['all',
+      ['==', ['get', 'admin_level'], 0],
+      ['==', ['get', 'iso_3166_1'], 'US']
+    ],
+    paint: {
+      'line-color': '#6b6880',
+      'line-width': 1.5,
+      'line-opacity': 0.8
+    }
   });
 
   mapReady = true;
