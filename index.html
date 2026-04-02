@@ -374,7 +374,7 @@ function filterOrgs() {
 mapboxgl.accessToken = MAPBOX_TOKEN;
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/light-v11',
+  style: 'mapbox://styles/mapbox/empty-v9',
   center: [-98.5, 39.5], zoom: 3.8, minZoom: 2, maxZoom: 12,
   projection: 'mercator'
 });
@@ -418,20 +418,9 @@ map.on('load', () => {
     }
   }, 'waterway-label');
 
-  map.addLayer({
-    id: 'county-borders',
-    type: 'line',
-    source: 'counties',
-    'source-layer': 'original',
-    paint: {'line-color':'#b0adc0','line-width':0.4,'line-opacity':0.5}
-  }, 'waterway-label');
 
-  map.addSource('states', {type:'vector', url:'mapbox://mapbox.mapbox-streets-v8'});
-  map.addLayer({
-    id: 'state-borders', type:'line', source:'states', 'source-layer':'admin',
-    filter: ['all',['==',['get','admin_level'],1],['==',['get','iso_3166_1'],'US']],
-    paint: {'line-color':'#6b6880','line-width':1.2,'line-opacity':0.8}
-  });
+
+
 
   mapReady = true;
   if (allOrgs.length > 0) updateAll();
