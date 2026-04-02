@@ -374,7 +374,7 @@ function filterOrgs() {
 mapboxgl.accessToken = MAPBOX_TOKEN;
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/empty-v9',
+  style: 'mapbox://styles/mapbox/light-v11',
   center: [-98.5, 39.5], zoom: 3.8, minZoom: 2, maxZoom: 12,
   projection: 'mercator'
 });
@@ -421,6 +421,21 @@ map.on('load', () => {
 
 
 
+
+  // Hide all labels and boundary layers for clean look
+  const layersToHide = [
+    'country-label','state-label','settlement-major-label','settlement-minor-label',
+    'settlement-subdivision-label','airport-label','poi-label','water-line-label',
+    'waterway-label','natural-point-label','natural-line-label','road-label',
+    'admin-0-boundary','admin-1-boundary','admin-0-boundary-disputed',
+    'admin-1-boundary-bg','admin-0-boundary-bg',
+    'road-motorway-trunk','road-primary','road-secondary-tertiary',
+    'road-street','road-minor','road-path',
+    'water','waterway'
+  ];
+  layersToHide.forEach(id => {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none');
+  });
 
   mapReady = true;
   if (allOrgs.length > 0) updateAll();
