@@ -458,6 +458,23 @@ map.on('load', () => {
     }
   });
 
+  // Add state borders
+  map.addLayer({
+    id: 'state-borders',
+    type: 'line',
+    source: 'us-outline',
+    'source-layer': 'admin',
+    filter: ['all',
+      ['==', ['get', 'admin_level'], 1],
+      ['==', ['get', 'iso_3166_1'], 'US']
+    ],
+    paint: {
+      'line-color': '#6b6880',
+      'line-width': 1,
+      'line-opacity': 0.6
+    }
+  });
+
   mapReady = true;
   if (allOrgs.length > 0) updateAll();
 
