@@ -564,41 +564,43 @@ map.on('load', () => {
     data: { type: 'FeatureCollection', features: [] }
   });
 
-  // Create pin icons on canvas
+  // Create pin icons — must be square ImageData for Mapbox
   function createPinIcon(color, size) {
     const canvas = document.createElement('canvas');
-    canvas.width = size; canvas.height = size * 1.4;
+    canvas.width = size;
+    canvas.height = size;
     const ctx = canvas.getContext('2d');
-    const r = size / 2;
-    const cx = r;
-    const cy = r;
-    // Circle head
+    const cx = size / 2;
+    const headR = size * 0.32;
+    const headCy = size * 0.35;
+    // Pin circle head
     ctx.beginPath();
-    ctx.arc(cx, cy, r - 2, 0, Math.PI * 2);
+    ctx.arc(cx, headCy, headR, 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
     ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 2.5;
+    ctx.lineWidth = 2;
     ctx.stroke();
-    // Pin pointer
+    // Pin pointer triangle
     ctx.beginPath();
-    ctx.moveTo(cx - r * 0.35, cy + r * 0.7);
-    ctx.lineTo(cx + r * 0.35, cy + r * 0.7);
-    ctx.lineTo(cx, cy + r * 1.4);
+    ctx.moveTo(cx - headR * 0.5, headCy + headR * 0.8);
+    ctx.lineTo(cx + headR * 0.5, headCy + headR * 0.8);
+    ctx.lineTo(cx, size * 0.95);
     ctx.closePath();
     ctx.fillStyle = color;
     ctx.fill();
     ctx.strokeStyle = '#fff';
     ctx.lineWidth = 1.5;
     ctx.stroke();
-    return canvas;
+    const imageData = ctx.getImageData(0, 0, size, size);
+    return { width: size, height: size, data: new Uint8Array(imageData.data.buffer) };
   }
 
   if (!map.hasImage('pin-local')) {
-    map.addImage('pin-local', createPinIcon('#2DD4BF', 24), {pixelRatio: 1});
+    map.addImage('pin-local', createPinIcon('#2DD4BF', 32));
   }
   if (!map.hasImage('pin-statewide')) {
-    map.addImage('pin-statewide', createPinIcon('#fb923c', 28), {pixelRatio: 1});
+    map.addImage('pin-statewide', createPinIcon('#fb923c', 36));
   }
 
   // Local network pins (teal)
