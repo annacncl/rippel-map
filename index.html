@@ -628,8 +628,8 @@ map.on('load', () => {
   }
 
   Promise.all([
-    createSVGPin('#2DD4BF', 32),
-    createSVGPin('#fb923c', 36)
+    createSVGPin('#2DD4BF', 22),
+    createSVGPin('#fb923c', 25)
   ]).then(([localPin, statewidePin]) => {
     if (!map.hasImage('pin-local')) map.addImage('pin-local', localPin);
     if (!map.hasImage('pin-statewide')) map.addImage('pin-statewide', statewidePin);
@@ -644,7 +644,7 @@ map.on('load', () => {
     layout: {
       visibility: 'none',
       'icon-image': 'pin-local',
-      'icon-size': 1.2,
+      'icon-size': 1.0,
       'icon-anchor': 'bottom',
       'icon-allow-overlap': true,
       'text-field': ['get', 'name'],
@@ -657,8 +657,8 @@ map.on('load', () => {
     },
     paint: {
       'text-color': '#111',
-      'text-halo-color': 'rgba(255,255,255,0.9)',
-      'text-halo-width': 2
+      'text-halo-color': 'rgba(255,255,255,0.4)',
+      'text-halo-width': 1
     }
   });
 
@@ -671,7 +671,7 @@ map.on('load', () => {
     layout: {
       visibility: 'none',
       'icon-image': 'pin-statewide',
-      'icon-size': 1.2,
+      'icon-size': 1.0,
       'icon-anchor': 'bottom',
       'icon-allow-overlap': true,
       'text-field': ['get', 'name'],
@@ -684,8 +684,8 @@ map.on('load', () => {
     },
     paint: {
       'text-color': '#111',
-      'text-halo-color': 'rgba(255,255,255,0.9)',
-      'text-halo-width': 2
+      'text-halo-color': 'rgba(255,255,255,0.4)',
+      'text-halo-width': 1
     }
   });
 
