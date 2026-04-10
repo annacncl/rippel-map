@@ -178,6 +178,60 @@
   .mapboxgl-ctrl-group button .mapboxgl-ctrl-icon { filter:invert(0.8); }
   .mapboxgl-ctrl-top-right { top:66px; right:292px; }
 
+  /* Network toggle */
+  .network-toggle-section { padding-top: 4px; }
+  .network-toggle-btn {
+    display: flex; align-items: center; gap: 10px; padding: 8px 12px;
+    border-radius: var(--radius); border: 1px solid var(--border);
+    background: transparent; color: var(--text-dim); font-size: 13px;
+    font-family: inherit; cursor: pointer; transition: all 0.15s;
+    text-align: left; width: 100%;
+  }
+  .network-toggle-btn:hover { background: var(--surface-hover); color: var(--text); }
+  .network-toggle-btn.active {
+    background: rgba(251,146,60,0.12);
+    border-color: rgba(251,146,60,0.4);
+    color: #fb923c;
+  }
+  .network-toggle-btn .scope-icon { width:8px; height:8px; border-radius:50%; border:2px solid currentColor; flex-shrink:0; }
+  .network-toggle-btn.active .scope-icon { background: #fb923c; }
+
+  /* Network list items */
+  .network-item {
+    padding: 8px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    transition: background 0.12s;
+  }
+  .network-item:hover { background: var(--surface-hover); }
+  .network-name { font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+  .network-scope-tag { font-size: 10px; padding: 2px 7px; border-radius: 100px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; flex-shrink: 0; }
+  .network-scope-tag.local { background: rgba(45,212,191,0.15); color: var(--rippel-teal); }
+  .network-scope-tag.statewide { background: rgba(251,146,60,0.15); color: #fb923c; }
+
+  /* Network list section */
+  .network-list-section { display: none; flex-direction: column; gap: 4px; }
+  .network-list-section.visible { display: flex; }
+  .network-list-section h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 8px; font-weight: 600; }
+  .network-list { overflow-y: auto; display: flex; flex-direction: column; gap: 1px; max-height: 200px; }
+  .network-list::-webkit-scrollbar { width: 4px; }
+  .network-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  /* Network popup */
+  .network-popup .mapboxgl-popup-content {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4); min-width: 200px;
+  }
+  .network-popup .mapboxgl-popup-tip { border-top-color: var(--surface); }
+  .network-popup .mapboxgl-popup-close-button { color: var(--text-dim); font-size: 16px; }
+  .np-name { font-weight: 600; margin-bottom: 4px; font-size: 14px; }
+  .np-scale { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .np-scale.local { color: var(--rippel-teal); }
+  .np-scale.statewide { color: #fb923c; }
+  .np-url a { font-size: 12px; color: var(--accent-light); text-decoration: none; }
+  .np-url a:hover { text-decoration: underline; }
+
   /* ── RESPONSIVE / MOBILE ── */
   @media (max-width: 768px) {
     .header {
@@ -257,6 +311,16 @@
       <button class="scope-btn" data-scope="local"><span class="scope-icon"></span> Local / Regional</button>
     </div>
   </div>
+  <div class="filter-section network-toggle-section">
+    <h3>Networks &amp; Initiatives</h3>
+    <button class="network-toggle-btn" id="network-toggle-btn">
+      <span class="scope-icon"></span> Show Networks &amp; Initiatives
+    </button>
+  </div>
+  <div class="network-list-section" id="network-list-section">
+    <h3>Local &amp; Statewide Networks</h3>
+    <div class="network-list" id="network-list"></div>
+  </div>
   <div class="org-list-section">
     <h3>Place-Based Influence</h3>
     <div class="org-list" id="org-list"></div>
@@ -319,6 +383,7 @@
 <script>
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiYW5uYWNvcm4iLCJhIjoiY21oZzR0d2N1MGJrZzJrczd3YzQ5dTd2eCJ9.jy4VcpJX5fWUqTo-Pr6oZA';
 const ORGS_JSON_PATH = 'orgs.json';
+const NETWORKS_JSON_PATH = 'networks.json';
 
 const STATE_FIPS = {AK:2,AL:1,AR:5,AZ:4,CA:6,CO:8,CT:9,DE:10,FL:12,GA:13,HI:15,IA:19,ID:16,IL:17,IN:18,KS:20,KY:21,LA:22,MA:25,MD:24,ME:23,MI:26,MN:27,MO:29,MS:28,MT:30,NC:37,ND:38,NE:31,NH:33,NJ:34,NM:35,NV:32,NY:36,OH:39,OK:40,OR:41,PA:42,RI:44,SC:45,SD:46,TN:47,TX:48,UT:49,VA:51,VT:50,WA:53,WI:55,WV:54,WY:56,DC:11};
 
@@ -328,7 +393,8 @@ const COUNTIES_BY_STATE = {1:[1001,1003,1005,1007,1009,1011,1013,1015,1017,1019,
 const C = ['#f3f0ff','#ddd6fe','#c4b5fd','#a78bfa','#7c3aed','#5b21b6','#3b0764'];
 
 // State + app state
-let allOrgs = [], filterState = {scope:'all', search:''}, selectedFips = null, mapReady = false;
+let allOrgs = [], allNetworks = [], filterState = {scope:'all', search:''}, selectedFips = null, mapReady = false;
+let showNetworks = false;
 let fullDensity = {};      // fips (int) -> count
 let prevDensityKeys = [];  // track what we set so we can clear it
 
@@ -475,6 +541,87 @@ map.on('load', () => {
     }
   });
 
+  // ── NETWORK PIN LAYERS ──
+  map.addSource('networks', {
+    type: 'geojson',
+    data: { type: 'FeatureCollection', features: [] }
+  });
+
+  // Local network pins (teal)
+  map.addLayer({
+    id: 'network-pins-local',
+    type: 'circle',
+    source: 'networks',
+    filter: ['==', ['get', 'scale'], 'local'],
+    layout: { visibility: 'none' },
+    paint: {
+      'circle-radius': 10,
+      'circle-color': '#2DD4BF',
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#fff',
+      'circle-opacity': 0.9
+    }
+  });
+
+  // Statewide network pins (amber/orange)
+  map.addLayer({
+    id: 'network-pins-statewide',
+    type: 'circle',
+    source: 'networks',
+    filter: ['==', ['get', 'scale'], 'statewide'],
+    layout: { visibility: 'none' },
+    paint: {
+      'circle-radius': 12,
+      'circle-color': '#fb923c',
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#fff',
+      'circle-opacity': 0.9
+    }
+  });
+
+  // Network labels
+  map.addLayer({
+    id: 'network-labels',
+    type: 'symbol',
+    source: 'networks',
+    layout: {
+      visibility: 'none',
+      'text-field': ['get', 'name'],
+      'text-size': 11,
+      'text-offset': [0, 1.6],
+      'text-anchor': 'top',
+      'text-max-width': 12,
+      'text-allow-overlap': false,
+      'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular']
+    },
+    paint: {
+      'text-color': '#E8E6E1',
+      'text-halo-color': 'rgba(15,17,20,0.9)',
+      'text-halo-width': 1.5
+    }
+  });
+
+  // Network pin popup
+  const networkPopup = new mapboxgl.Popup({
+    closeButton: true, closeOnClick: false, offset: 14, className: 'network-popup'
+  });
+
+  ['network-pins-local', 'network-pins-statewide'].forEach(layerId => {
+    map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
+    map.on('click', layerId, (e) => {
+      const props = e.features[0].properties;
+      const coords = e.features[0].geometry.coordinates.slice();
+      const scaleClass = props.scale === 'local' ? 'local' : 'statewide';
+      const scaleLabel = props.scale === 'local' ? 'Local' : 'Statewide';
+      networkPopup.setLngLat(coords).setHTML(\`
+        <div class="np-name">\${props.name}</div>
+        <div class="np-scale \${scaleClass}">\${scaleLabel} Network</div>
+        \${props.website ? \`<div class="np-url"><a href="\${props.website}" target="_blank" rel="noopener">\${props.website.replace(/^https?:\/\//, '')}</a></div>\` : ''}
+      \`).addTo(map);
+    });
+  });
+
   mapReady = true;
   if (allOrgs.length > 0) updateAll();
 
@@ -536,6 +683,89 @@ function setHighlight(fipsList) {
     map.setFeatureState({source:'counties',sourceLayer:'original',id:parseInt(f)},{highlighted:true});
   }
   highlightedFips = fipsList.map(String);
+}
+
+function updateNetworkPins() {
+  const visibleNetworks = allNetworks.filter(n => n.scale !== 'nationwide' && n.lat && n.lng);
+
+  // Apply small offset to networks that share the same state centroid
+  const coordCount = {};
+  visibleNetworks.forEach(n => {
+    const key = \`\${n.lng.toFixed(2)},\${n.lat.toFixed(2)}\`;
+    coordCount[key] = (coordCount[key] || 0) + 1;
+  });
+  const coordIndex = {};
+  const features = visibleNetworks.map(n => {
+    const key = \`\${n.lng.toFixed(2)},\${n.lat.toFixed(2)}\`;
+    coordIndex[key] = (coordIndex[key] || 0);
+    const idx = coordIndex[key];
+    coordIndex[key]++;
+    const total = coordCount[key];
+    // Spread pins in a small circle if stacked
+    const angle = (idx / total) * 2 * Math.PI;
+    const radius = total > 1 ? 0.08 : 0;
+    const lng = n.lng + Math.cos(angle) * radius;
+    const lat = n.lat + Math.sin(angle) * radius * 0.5;
+    return {
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: [lng, lat] },
+      properties: { name: n.name, scale: n.scale, website: n.website || '' }
+    };
+  });
+
+  if (map.getSource('networks')) {
+    map.getSource('networks').setData({ type: 'FeatureCollection', features });
+  }
+
+  // Render network list
+  renderNetworkList();
+}
+
+function renderNetworkList() {
+  const listEl = document.getElementById('network-list');
+  const localNets = allNetworks.filter(n => n.scale === 'local' || n.scale === 'statewide');
+  listEl.innerHTML = localNets.map(n => {
+    const tag = n.scale === 'statewide'
+      ? '<span class="network-scope-tag statewide">Statewide</span>'
+      : '<span class="network-scope-tag local">Local</span>';
+    return \`<div class="network-item" data-lng="\${n.lng}" data-lat="\${n.lat}" data-name="\${n.name}" data-website="\${n.website||''}" data-scale="\${n.scale}">
+      <span class="network-name">\${n.name}</span>\${tag}
+    </div>\`;
+  }).join('');
+
+  listEl.querySelectorAll('.network-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const lng = parseFloat(el.dataset.lng);
+      const lat = parseFloat(el.dataset.lat);
+      const name = el.dataset.name;
+      const website = el.dataset.website;
+      const scale = el.dataset.scale;
+      if (lng && lat) {
+        map.flyTo({ center: [lng, lat], zoom: 7, duration: 800 });
+        const scaleClass = scale === 'local' ? 'local' : 'statewide';
+        const scaleLabel = scale === 'local' ? 'Local' : 'Statewide';
+        new mapboxgl.Popup({ closeButton: true, offset: 14, className: 'network-popup' })
+          .setLngLat([lng, lat])
+          .setHTML(\`
+            <div class="np-name">\${name}</div>
+            <div class="np-scale \${scaleClass}">\${scaleLabel} Network</div>
+            \${website ? \`<div class="np-url"><a href="\${website}" target="_blank" rel="noopener">\${website.replace(/^https?:\/\//, '')}</a></div>\` : ''}
+          \`).addTo(map);
+      }
+    });
+  });
+
+  // Also render nationwide networks in right panel
+  const nationwideNets = allNetworks.filter(n => n.scale === 'nationwide');
+  const natList = document.getElementById('national-list');
+  if (natList && showNetworks) {
+    const netHtml = nationwideNets.map(n => \`
+      <div class="national-org-item">
+        <div class="nat-name">\${n.name}</div>
+        \${n.website ? \`<a href="\${n.website}" target="_blank" rel="noopener">\${n.website.replace(/^https?:\/\//, '')}</a>\` : ''}
+      </div>\`).join('');
+    natList.innerHTML = netHtml + natList.innerHTML;
+  }
 }
 
 function updateAll() {
@@ -622,11 +852,15 @@ if (window.innerWidth <= 768) {
   document.getElementById('legend').classList.add('panel-collapsed');
 }
 
-fetch(ORGS_JSON_PATH).then(r=>r.json()).then(data => {
-  allOrgs = data;
+Promise.all([
+  fetch(ORGS_JSON_PATH).then(r => r.json()),
+  fetch(NETWORKS_JSON_PATH).then(r => r.json())
+]).then(([orgs, networks]) => {
+  allOrgs = orgs;
+  allNetworks = networks;
   const t = setInterval(() => { if(mapReady){clearInterval(t);updateAll();} }, 100);
 }).catch(() => {
-  document.getElementById('about-bar-body').innerHTML = '<span style="color:#f87171">⚠ Could not load orgs.json — run via a local server</span>'; document.getElementById('about-bar-body').classList.add('open');
+  document.getElementById('about-bar-body').innerHTML = '<span style="color:#f87171">⚠ Could not load data files — run via a local server</span>';
 });
 
 document.querySelectorAll('.scope-btn').forEach(btn => {
@@ -657,6 +891,26 @@ document.getElementById('sidebar-toggle').addEventListener('click', () => {
   sb.classList.toggle('collapsed');
   document.getElementById('sidebar-toggle').textContent = sb.classList.contains('collapsed') ? '▶' : '◀';
   setTimeout(() => map.resize(), 350);
+});
+
+document.getElementById('network-toggle-btn').addEventListener('click', () => {
+  showNetworks = !showNetworks;
+  const btn = document.getElementById('network-toggle-btn');
+  const section = document.getElementById('network-list-section');
+  btn.classList.toggle('active', showNetworks);
+  section.classList.toggle('visible', showNetworks);
+  const visibility = showNetworks ? 'visible' : 'none';
+  if (mapReady) {
+    map.setLayoutProperty('network-pins-local', 'visibility', visibility);
+    map.setLayoutProperty('network-pins-statewide', 'visibility', visibility);
+    map.setLayoutProperty('network-labels', 'visibility', visibility);
+    if (showNetworks) updateNetworkPins();
+  }
+  if (showNetworks) renderNetworkList();
+  else {
+    // Restore national orgs list when hiding networks
+    renderNationalList();
+  }
 });
 
 document.getElementById('national-panel-toggle').addEventListener('click', () => {
