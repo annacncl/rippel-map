@@ -524,6 +524,23 @@ map.on('load', () => {
     }
   });
 
+  // Add US country outline
+  map.addLayer({
+    id: 'us-country-outline',
+    type: 'line',
+    source: 'us-outline',
+    'source-layer': 'admin',
+    filter: ['all',
+      ['==', ['get', 'admin_level'], 0],
+      ['==', ['get', 'iso_3166_1'], 'US']
+    ],
+    paint: {
+      'line-color': '#4a4a5a',
+      'line-width': 2,
+      'line-opacity': 1
+    }
+  });
+
   // Add state borders
   map.addLayer({
     id: 'state-borders',
@@ -547,57 +564,94 @@ map.on('load', () => {
     data: { type: 'FeatureCollection', features: [] }
   });
 
+  // Create pin icons on canvas
+  function createPinIcon(color, size) {
+    const canvas = document.createElement('canvas');
+    canvas.width = size; canvas.height = size * 1.4;
+    const ctx = canvas.getContext('2d');
+    const r = size / 2;
+    const cx = r;
+    const cy = r;
+    // Circle head
+    ctx.beginPath();
+    ctx.arc(cx, cy, r - 2, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+    // Pin pointer
+    ctx.beginPath();
+    ctx.moveTo(cx - r * 0.35, cy + r * 0.7);
+    ctx.lineTo(cx + r * 0.35, cy + r * 0.7);
+    ctx.lineTo(cx, cy + r * 1.4);
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    return canvas;
+  }
+
+  if (!map.hasImage('pin-local')) {
+    map.addImage('pin-local', createPinIcon('#2DD4BF', 24), {pixelRatio: 1});
+  }
+  if (!map.hasImage('pin-statewide')) {
+    map.addImage('pin-statewide', createPinIcon('#fb923c', 28), {pixelRatio: 1});
+  }
+
   // Local network pins (teal)
   map.addLayer({
     id: 'network-pins-local',
-    type: 'circle',
+    type: 'symbol',
     source: 'networks',
     filter: ['==', ['get', 'scale'], 'local'],
-    layout: { visibility: 'none' },
+    layout: {
+      visibility: 'none',
+      'icon-image': 'pin-local',
+      'icon-size': 1.2,
+      'icon-anchor': 'bottom',
+      'icon-allow-overlap': true,
+      'text-field': ['get', 'name'],
+      'text-size': 11,
+      'text-offset': [0, 0.5],
+      'text-anchor': 'top',
+      'text-max-width': 10,
+      'text-allow-overlap': false,
+      'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular']
+    },
     paint: {
-      'circle-radius': 10,
-      'circle-color': '#2DD4BF',
-      'circle-stroke-width': 2,
-      'circle-stroke-color': '#fff',
-      'circle-opacity': 0.9
+      'text-color': '#111',
+      'text-halo-color': 'rgba(255,255,255,0.9)',
+      'text-halo-width': 2
     }
   });
 
   // Statewide network pins (amber/orange)
   map.addLayer({
     id: 'network-pins-statewide',
-    type: 'circle',
-    source: 'networks',
-    filter: ['==', ['get', 'scale'], 'statewide'],
-    layout: { visibility: 'none' },
-    paint: {
-      'circle-radius': 12,
-      'circle-color': '#fb923c',
-      'circle-stroke-width': 2,
-      'circle-stroke-color': '#fff',
-      'circle-opacity': 0.9
-    }
-  });
-
-  // Network labels
-  map.addLayer({
-    id: 'network-labels',
     type: 'symbol',
     source: 'networks',
+    filter: ['==', ['get', 'scale'], 'statewide'],
     layout: {
       visibility: 'none',
+      'icon-image': 'pin-statewide',
+      'icon-size': 1.2,
+      'icon-anchor': 'bottom',
+      'icon-allow-overlap': true,
       'text-field': ['get', 'name'],
       'text-size': 11,
-      'text-offset': [0, 1.6],
+      'text-offset': [0, 0.5],
       'text-anchor': 'top',
-      'text-max-width': 12,
+      'text-max-width': 10,
       'text-allow-overlap': false,
       'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular']
     },
     paint: {
-      'text-color': '#E8E6E1',
-      'text-halo-color': 'rgba(15,17,20,0.9)',
-      'text-halo-width': 1.5
+      'text-color': '#111',
+      'text-halo-color': 'rgba(255,255,255,0.9)',
+      'text-halo-width': 2
     }
   });
 
@@ -755,17 +809,7 @@ function renderNetworkList() {
     });
   });
 
-  // Also render nationwide networks in right panel
-  const nationwideNets = allNetworks.filter(n => n.scale === 'nationwide');
-  const natList = document.getElementById('national-list');
-  if (natList && showNetworks) {
-    const netHtml = nationwideNets.map(n => `
-      <div class="national-org-item">
-        <div class="nat-name">${n.name}</div>
-        ${n.website ? `<a href="${n.website}" target="_blank" rel="noopener">${n.website.replace(/^https?:\//, '')}</a>` : ''}
-      </div>`).join('');
-    natList.innerHTML = netHtml + natList.innerHTML;
-  }
+    renderNationalList();
 }
 
 function updateAll() {
@@ -834,13 +878,28 @@ function clearOrgDetail() {
 
 function renderNationalList() {
   const nats = allOrgs.filter(o => o.scope === 'national');
-  document.getElementById('national-count').textContent = nats.length;
-  document.getElementById('national-list').innerHTML = nats.map(o => `
+  const nationwideNets = showNetworks ? allNetworks.filter(n => n.scale === 'nationwide') : [];
+  const total = nats.length + nationwideNets.length;
+  document.getElementById('national-count').textContent = total;
+
+  const orgsHtml = nats.map(o => `
     <div class="national-org-item">
       <div class="nat-name">${o.name}</div>
-      ${o.website?`<a href="${o.website}" target="_blank" rel="noopener">${o.website.replace(/^https?:\//,'')}</a>`:''}
-      ${o.mission?`<div class="nat-mission">${o.mission}</div>`:''}
+      ${o.website ? `<a href="${o.website}" target="_blank" rel="noopener">${o.website.replace(/^https?:\/\//, '')}</a>` : ''}
+      ${o.mission ? `<div class="nat-mission">${o.mission}</div>` : ''}
     </div>`).join('');
+
+  const netsHtml = nationwideNets.length > 0 ? `
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-dim);font-weight:600;padding:12px 10px 6px;border-top:1px solid var(--border);margin-top:6px;">
+      Nationwide Networks
+    </div>
+    ${nationwideNets.map(n => `
+    <div class="national-org-item">
+      <div class="nat-name">${n.name}</div>
+      ${n.website ? `<a href="${n.website}" target="_blank" rel="noopener">${n.website.replace(/^https?:\/\//, '')}</a>` : ''}
+    </div>`).join('')}` : '';
+
+  document.getElementById('national-list').innerHTML = orgsHtml + netsHtml;
 }
 
 // Start sidebars collapsed on mobile
@@ -903,14 +962,10 @@ document.getElementById('network-toggle-btn').addEventListener('click', () => {
   if (mapReady) {
     map.setLayoutProperty('network-pins-local', 'visibility', visibility);
     map.setLayoutProperty('network-pins-statewide', 'visibility', visibility);
-    map.setLayoutProperty('network-labels', 'visibility', visibility);
     if (showNetworks) updateNetworkPins();
   }
   if (showNetworks) renderNetworkList();
-  else {
-    // Restore national orgs list when hiding networks
-    renderNationalList();
-  }
+  renderNationalList();
 });
 
 document.getElementById('national-panel-toggle').addEventListener('click', () => {
