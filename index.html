@@ -573,9 +573,9 @@ map.on('load', () => {
     'source-layer': 'country_boundaries',
     filter: ['==', ['get', 'iso_3166_1_alpha_3'], 'USA'],
     paint: {
-      'line-color': '#4a4a5a',
-      'line-width': 2,
-      'line-opacity': 1
+      'line-color': '#6b6880',
+      'line-width': 1.2,
+      'line-opacity': 0.8
     }
   });
 
@@ -602,44 +602,38 @@ map.on('load', () => {
     data: { type: 'FeatureCollection', features: [] }
   });
 
-  // Create pin icons — must be square ImageData for Mapbox
-  function createPinIcon(color, size) {
+  // Create classic teardrop pin icons using SVG path
+  function createSVGPin(color, size) {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 40 55">
+      <path d="M20 0 C9 0 0 9 0 20 C0 35 20 55 20 55 C20 55 40 35 40 20 C40 9 31 0 20 0 Z"
+        fill="${color}" stroke="white" stroke-width="3"/>
+      <circle cx="20" cy="20" r="8" fill="white" opacity="0.9"/>
+    </svg>`;
+    const img = new Image(size, Math.round(size * 1.375));
     const canvas = document.createElement('canvas');
     canvas.width = size;
-    canvas.height = size;
+    canvas.height = Math.round(size * 1.375);
     const ctx = canvas.getContext('2d');
-    const cx = size / 2;
-    const headR = size * 0.32;
-    const headCy = size * 0.35;
-    // Pin circle head
-    ctx.beginPath();
-    ctx.arc(cx, headCy, headR, 0, Math.PI * 2);
-    ctx.fillStyle = color;
-    ctx.fill();
-    ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-    // Pin pointer triangle
-    ctx.beginPath();
-    ctx.moveTo(cx - headR * 0.5, headCy + headR * 0.8);
-    ctx.lineTo(cx + headR * 0.5, headCy + headR * 0.8);
-    ctx.lineTo(cx, size * 0.95);
-    ctx.closePath();
-    ctx.fillStyle = color;
-    ctx.fill();
-    ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-    const imageData = ctx.getImageData(0, 0, size, size);
-    return { width: size, height: size, data: new Uint8Array(imageData.data.buffer) };
+    const blob = new Blob([svg], {type: 'image/svg+xml'});
+    const url = URL.createObjectURL(blob);
+    return new Promise(resolve => {
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0);
+        URL.revokeObjectURL(url);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        resolve({ width: canvas.width, height: canvas.height, data: new Uint8Array(imageData.data.buffer) });
+      };
+      img.src = url;
+    });
   }
 
-  if (!map.hasImage('pin-local')) {
-    map.addImage('pin-local', createPinIcon('#2DD4BF', 32));
-  }
-  if (!map.hasImage('pin-statewide')) {
-    map.addImage('pin-statewide', createPinIcon('#fb923c', 36));
-  }
+  Promise.all([
+    createSVGPin('#2DD4BF', 32),
+    createSVGPin('#fb923c', 36)
+  ]).then(([localPin, statewidePin]) => {
+    if (!map.hasImage('pin-local')) map.addImage('pin-local', localPin);
+    if (!map.hasImage('pin-statewide')) map.addImage('pin-statewide', statewidePin);
+  });
 
   // Local network pins (teal)
   map.addLayer({
