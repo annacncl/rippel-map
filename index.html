@@ -614,11 +614,11 @@ map.on('load', () => {
       const coords = e.features[0].geometry.coordinates.slice();
       const scaleClass = props.scale === 'local' ? 'local' : 'statewide';
       const scaleLabel = props.scale === 'local' ? 'Local' : 'Statewide';
-      networkPopup.setLngLat(coords).setHTML(\`
-        <div class="np-name">\${props.name}</div>
-        <div class="np-scale \${scaleClass}">\${scaleLabel} Network</div>
-        \${props.website ? \`<div class="np-url"><a href="\${props.website}" target="_blank" rel="noopener">\${props.website.replace(/^https?:\/\//, '')}</a></div>\` : ''}
-      \`).addTo(map);
+      networkPopup.setLngLat(coords).setHTML(`
+        <div class="np-name">${props.name}</div>
+        <div class="np-scale ${scaleClass}">${scaleLabel} Network</div>
+        ${props.website ? `<div class="np-url"><a href="${props.website}" target="_blank" rel="noopener">${props.website.replace(/^https?:\//, '')}</a></div>` : ''}
+      `).addTo(map);
     });
   });
 
@@ -691,12 +691,12 @@ function updateNetworkPins() {
   // Apply small offset to networks that share the same state centroid
   const coordCount = {};
   visibleNetworks.forEach(n => {
-    const key = \`\${n.lng.toFixed(2)},\${n.lat.toFixed(2)}\`;
+    const key = `${n.lng.toFixed(2)},${n.lat.toFixed(2)}`;
     coordCount[key] = (coordCount[key] || 0) + 1;
   });
   const coordIndex = {};
   const features = visibleNetworks.map(n => {
-    const key = \`\${n.lng.toFixed(2)},\${n.lat.toFixed(2)}\`;
+    const key = `${n.lng.toFixed(2)},${n.lat.toFixed(2)}`;
     coordIndex[key] = (coordIndex[key] || 0);
     const idx = coordIndex[key];
     coordIndex[key]++;
@@ -728,9 +728,9 @@ function renderNetworkList() {
     const tag = n.scale === 'statewide'
       ? '<span class="network-scope-tag statewide">Statewide</span>'
       : '<span class="network-scope-tag local">Local</span>';
-    return \`<div class="network-item" data-lng="\${n.lng}" data-lat="\${n.lat}" data-name="\${n.name}" data-website="\${n.website||''}" data-scale="\${n.scale}">
-      <span class="network-name">\${n.name}</span>\${tag}
-    </div>\`;
+    return `<div class="network-item" data-lng="${n.lng}" data-lat="${n.lat}" data-name="${n.name}" data-website="${n.website||''}" data-scale="${n.scale}">
+      <span class="network-name">${n.name}</span>${tag}
+    </div>`;
   }).join('');
 
   listEl.querySelectorAll('.network-item').forEach(el => {
@@ -746,11 +746,11 @@ function renderNetworkList() {
         const scaleLabel = scale === 'local' ? 'Local' : 'Statewide';
         new mapboxgl.Popup({ closeButton: true, offset: 14, className: 'network-popup' })
           .setLngLat([lng, lat])
-          .setHTML(\`
-            <div class="np-name">\${name}</div>
-            <div class="np-scale \${scaleClass}">\${scaleLabel} Network</div>
-            \${website ? \`<div class="np-url"><a href="\${website}" target="_blank" rel="noopener">\${website.replace(/^https?:\/\//, '')}</a></div>\` : ''}
-          \`).addTo(map);
+          .setHTML(`
+            <div class="np-name">${name}</div>
+            <div class="np-scale ${scaleClass}">${scaleLabel} Network</div>
+            ${website ? `<div class="np-url"><a href="${website}" target="_blank" rel="noopener">${website.replace(/^https?:\//, '')}</a></div>` : ''}
+          `).addTo(map);
       }
     });
   });
@@ -759,11 +759,11 @@ function renderNetworkList() {
   const nationwideNets = allNetworks.filter(n => n.scale === 'nationwide');
   const natList = document.getElementById('national-list');
   if (natList && showNetworks) {
-    const netHtml = nationwideNets.map(n => \`
+    const netHtml = nationwideNets.map(n => `
       <div class="national-org-item">
-        <div class="nat-name">\${n.name}</div>
-        \${n.website ? \`<a href="\${n.website}" target="_blank" rel="noopener">\${n.website.replace(/^https?:\/\//, '')}</a>\` : ''}
-      </div>\`).join('');
+        <div class="nat-name">${n.name}</div>
+        ${n.website ? `<a href="${n.website}" target="_blank" rel="noopener">${n.website.replace(/^https?:\//, '')}</a>` : ''}
+      </div>`).join('');
     natList.innerHTML = netHtml + natList.innerHTML;
   }
 }
@@ -811,7 +811,7 @@ const STATE_BBOX = {1:[-88.5,30.1,-84.9,35.0],2:[-180,51,-129,71.5],4:[-114.8,31
 function showOrgDetail(org) {
   document.getElementById('od-name').textContent = org.name;
   document.getElementById('od-website').innerHTML = org.website
-    ? `<a href="${org.website}" target="_blank" rel="noopener">${org.website.replace(/^https?:\/\//,'')}</a>`
+    ? `<a href="${org.website}" target="_blank" rel="noopener">${org.website.replace(/^https?:\//,'')}</a>`
     : '<span style="color:var(--text-dim)">No website</span>';
   document.getElementById('od-mission').textContent = org.mission || '';
   document.getElementById('org-detail').classList.add('visible');
@@ -838,7 +838,7 @@ function renderNationalList() {
   document.getElementById('national-list').innerHTML = nats.map(o => `
     <div class="national-org-item">
       <div class="nat-name">${o.name}</div>
-      ${o.website?`<a href="${o.website}" target="_blank" rel="noopener">${o.website.replace(/^https?:\/\//,'')}</a>`:''}
+      ${o.website?`<a href="${o.website}" target="_blank" rel="noopener">${o.website.replace(/^https?:\//,'')}</a>`:''}
       ${o.mission?`<div class="nat-mission">${o.mission}</div>`:''}
     </div>`).join('');
 }
