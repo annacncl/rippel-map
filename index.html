@@ -524,16 +524,18 @@ map.on('load', () => {
     }
   });
 
-  // Add US country outline
+  // Add US outer boundary using a dedicated tileset filter
+  // Use disputed=false and admin_level=0 for country borders
+  map.addSource('country-boundaries', {
+    type: 'vector',
+    url: 'mapbox://mapbox.country-boundaries-v1'
+  });
   map.addLayer({
     id: 'us-country-outline',
     type: 'line',
-    source: 'us-outline',
-    'source-layer': 'admin',
-    filter: ['all',
-      ['==', ['get', 'admin_level'], 0],
-      ['==', ['get', 'iso_3166_1'], 'US']
-    ],
+    source: 'country-boundaries',
+    'source-layer': 'country_boundaries',
+    filter: ['==', ['get', 'iso_3166_1_alpha_3'], 'USA'],
     paint: {
       'line-color': '#4a4a5a',
       'line-width': 2,
