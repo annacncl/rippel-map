@@ -605,24 +605,29 @@ map.on('load', () => {
 
   // Create classic teardrop pin icons using SVG path
   function createSVGPin(color, size) {
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 40 55">
+    // Pin is 40 wide x 55 tall in SVG units, tip at bottom center (20, 55)
+    const w = size;
+    const h = Math.round(size * 1.375); // maintain aspect ratio
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 40 55">
       <path d="M20 0 C9 0 0 9 0 20 C0 35 20 55 20 55 C20 55 40 35 40 20 C40 9 31 0 20 0 Z"
         fill="${color}" stroke="white" stroke-width="3"/>
       <circle cx="20" cy="20" r="8" fill="white" opacity="0.9"/>
     </svg>`;
-    const img = new Image(size, Math.round(size * 1.375));
     const canvas = document.createElement('canvas');
-    canvas.width = size;
-    canvas.height = Math.round(size * 1.375);
+    canvas.width = w;
+    canvas.height = h;
     const ctx = canvas.getContext('2d');
     const blob = new Blob([svg], {type: 'image/svg+xml'});
     const url = URL.createObjectURL(blob);
+    const img = new Image(w, h);
     return new Promise(resolve => {
       img.onload = () => {
-        ctx.drawImage(img, 0, 0);
+        ctx.drawImage(img, 0, 0, w, h);
         URL.revokeObjectURL(url);
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        resolve({ width: canvas.width, height: canvas.height, data: new Uint8Array(imageData.data.buffer) });
+        const imageData = ctx.getImageData(0, 0, w, h);
+        // icon-anchor: 'bottom' places bottom-center of image at coordinate
+        // Pin tip is at bottom-center of SVG, so this is correct
+        resolve({ width: w, height: h, data: new Uint8Array(imageData.data.buffer) });
       };
       img.src = url;
     });
@@ -647,8 +652,7 @@ map.on('load', () => {
       'icon-image': 'pin-local',
       'icon-size': 1.0,
       'icon-anchor': 'bottom',
-      'icon-allow-overlap': true,
-      'icon-offset': [0, -8]
+      'icon-allow-overlap': true
     },
     paint: {}
   });
@@ -664,10 +668,9 @@ map.on('load', () => {
       'icon-image': 'pin-statewide',
       'icon-size': 1.1,
       'icon-anchor': 'bottom',
-      'icon-allow-overlap': true,
-      'icon-offset': [0, -8]
+      'icon-allow-overlap': true
     },
-    paint: {}  
+    paint: {}
   });
 
   // Network pin popup
