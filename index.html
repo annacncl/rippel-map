@@ -852,7 +852,7 @@ function updateAll() {
   const uniqueCounties = Object.keys(fullDensity).length;
   const uniqueStates = new Set(Object.keys(fullDensity).map(f=>Math.floor(parseInt(f)/1000))).size;
   document.getElementById('stat-orgs').textContent = filtered.length.toLocaleString();
-  document.getElementById('stat-networks').textContent = allNetworks.filter(n => n.scale !== 'nationwide' && n.lat && n.lng).length.toLocaleString();
+  document.getElementById('stat-networks').textContent = allNetworks.length.toLocaleString();
   document.getElementById('stat-counties').textContent = uniqueCounties.toLocaleString();
   document.getElementById('stat-states').textContent = uniqueStates;
 
