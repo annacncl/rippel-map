@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rippel Foundation — Ecosystem Density Map</title>
+<title>Thriving Together</title>
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
@@ -317,7 +317,8 @@
   </div>
   <div class="header-stats">
     <div><span class="stat-value" id="stat-orgs">—</span><span class="stat-label">organizations</span></div>
-    <div><span class="stat-value" id="stat-counties">—</span><span class="stat-label">counties reached</span></div>
+    <div><span class="stat-value" id="stat-networks">—</span><span class="stat-label">networks</span></div>
+    <div><span class="stat-value" id="stat-counties">—</span><span class="stat-label">counties</span></div>
     <div><span class="stat-value" id="stat-states">—</span><span class="stat-label">states</span></div>
   </div>
 </header>
@@ -332,7 +333,7 @@
     <div class="scope-filters">
       <button class="scope-btn active" data-scope="all"><span class="scope-icon"></span> All Organizations</button>
       <button class="scope-btn" data-scope="statewide"><span class="scope-icon"></span> Statewide</button>
-      <button class="scope-btn" data-scope="local"><span class="scope-icon"></span> Local / Regional</button>
+      <button class="scope-btn" data-scope="local"><span class="scope-icon"></span> Local / County</button>
     </div>
   </div>
   <div class="filter-section network-toggle-section">
@@ -348,7 +349,7 @@
     </button>
   </div>
   <div class="network-list-section" id="network-list-section">
-    <h3>Local &amp; Statewide Networks</h3>
+    <h3>Regional Networks</h3>
     <div class="network-list" id="network-list"></div>
   </div>
   <div class="org-list-section">
@@ -628,8 +629,8 @@ map.on('load', () => {
   }
 
   Promise.all([
-    createSVGPin('#2DD4BF', 22),
-    createSVGPin('#fb923c', 25)
+    createSVGPin('#2DD4BF', 32),
+    createSVGPin('#fb923c', 36)
   ]).then(([localPin, statewidePin]) => {
     if (!map.hasImage('pin-local')) map.addImage('pin-local', localPin);
     if (!map.hasImage('pin-statewide')) map.addImage('pin-statewide', statewidePin);
@@ -647,19 +648,9 @@ map.on('load', () => {
       'icon-size': 1.0,
       'icon-anchor': 'bottom',
       'icon-allow-overlap': true,
-      'text-field': ['get', 'name'],
-      'text-size': 11,
-      'text-offset': [0, 0.5],
-      'text-anchor': 'top',
-      'text-max-width': 10,
-      'text-allow-overlap': false,
-      'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular']
+      'icon-offset': [0, -8]
     },
-    paint: {
-      'text-color': '#111',
-      'text-halo-color': 'rgba(255,255,255,0.4)',
-      'text-halo-width': 1
-    }
+    paint: {}
   });
 
   // Statewide network pins (amber/orange)
@@ -671,22 +662,12 @@ map.on('load', () => {
     layout: {
       visibility: 'none',
       'icon-image': 'pin-statewide',
-      'icon-size': 1.0,
+      'icon-size': 1.1,
       'icon-anchor': 'bottom',
       'icon-allow-overlap': true,
-      'text-field': ['get', 'name'],
-      'text-size': 11,
-      'text-offset': [0, 0.5],
-      'text-anchor': 'top',
-      'text-max-width': 10,
-      'text-allow-overlap': false,
-      'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular']
+      'icon-offset': [0, -8]
     },
-    paint: {
-      'text-color': '#111',
-      'text-halo-color': 'rgba(255,255,255,0.4)',
-      'text-halo-width': 1
-    }
+    paint: {}  
   });
 
   // Network pin popup
@@ -868,6 +849,7 @@ function updateAll() {
   const uniqueCounties = Object.keys(fullDensity).length;
   const uniqueStates = new Set(Object.keys(fullDensity).map(f=>Math.floor(parseInt(f)/1000))).size;
   document.getElementById('stat-orgs').textContent = filtered.length.toLocaleString();
+  document.getElementById('stat-networks').textContent = allNetworks.filter(n => n.scale !== 'nationwide' && n.lat && n.lng).length.toLocaleString();
   document.getElementById('stat-counties').textContent = uniqueCounties.toLocaleString();
   document.getElementById('stat-states').textContent = uniqueStates;
 
