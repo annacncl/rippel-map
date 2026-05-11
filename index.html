@@ -38,6 +38,22 @@
   .header-brand h1 { font-family:'Fraunces',serif; font-size:18px; font-weight:500; letter-spacing:-0.02em; }
   .header-brand h1 span { color:var(--text-dim); font-weight:300; margin-left:6px; }
   .header-stats { display:flex; gap:28px; font-size:13px; }
+  .illustration-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #f59e0b;
+    color: #1a0a00;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 0;
+  }
+  .header { top: 26px; }
   .stat-value { font-weight:600; color:var(--rippel-teal); font-variant-numeric:tabular-nums; }
   .stat-label { color:var(--text-dim); margin-left:6px; }
 
@@ -310,6 +326,7 @@
 </head>
 <body>
 
+<div class="illustration-banner">⚠ Illustrative Map — For Demonstration Purposes Only</div>
 <header class="header">
   <div class="header-brand">
     <div class="logo-mark"></div>
